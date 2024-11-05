@@ -1,2 +1,2 @@
 # docs-bitcr
-Bitcredit documantation
+Bitcredit documentation
