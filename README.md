@@ -1,7 +1,7 @@
 # docs.bitcr
 Bitcredit documentation
 
-## Bill
+## E-Bill
 * cryptographic primitives
     * ed25519 for the logic in the DHT
     * RSA (2048) for encryption
