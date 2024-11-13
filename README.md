@@ -110,3 +110,41 @@ Bitcredit documentation
 * glossary
 
 ## Wildcat mint
+* cryptographic primitives
+    * Cashu (links to documents)
+    * Secp256k1
+* request for minting a bill of exchange from a user to Wildcat
+    * bill of exchange delivery
+    * delivery of bill of exchange keys
+* quote
+    * credit check of bill of exchange by Wildcat
+    * discount interest
+    * generation of a new keyset (from a combination of bill of exchange key and Wildcat key)
+    * generation of quota id from bill of exchange id
+    * quote validity period
+    * sending a quote to the user
+* user quote check
+    * quote rejection
+    * quote confirmation
+* generation of credit tokens
+    * explanation of the credit token
+    * token prefix
+    * Wildcat fee
+    * credit token delivery to the user
+* conversion of a credit token into a debit token
+    * redemption
+    * discounting
+* communication channels
+    * Wildcat API
+        * for bills
+        * for quotes
+        * for credit tokens
+    * sending credit tokens between users
+        * transmission methods
+            * QR
+            * NFC
+            * String
+        * how the sender sends the tokens
+        * how the recipient redeems the tokens
+* FAQ
+    * Cashu modifications
