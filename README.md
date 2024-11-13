@@ -146,5 +146,7 @@ Bitcredit documentation
             * String
         * how the sender sends the tokens
         * how the recipient redeems the tokens
+* terms of use
 * FAQ
     * Cashu modifications
+* glossary
