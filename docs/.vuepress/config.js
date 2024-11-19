@@ -13,6 +13,8 @@ export default defineUserConfig({
     logo: '',
     contributors: false,
 
+    base: '/docs-bitcr/',
+
     navbar: [
       { text: 'E-Bill', link: '/e-bill/' },
       { text: 'Wildcat Mint', link: '/wildcat-mint/' },
