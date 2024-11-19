@@ -272,8 +272,8 @@ export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
       server: {
-        hmr: {
-          overlay: false, // Disable error overlay in the browser
+        server: {
+          hmr: false, // Disable HMR
         },
       },
     },
