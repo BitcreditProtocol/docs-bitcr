@@ -8,8 +8,6 @@ export default defineUserConfig({
   title: 'Bitcredit Documentation',
   description: 'Comprehensive documentation for Bitcredit',
 
-  base: '/docs-bitcr/',
-
   theme: defaultTheme({
     logo: '',
 
