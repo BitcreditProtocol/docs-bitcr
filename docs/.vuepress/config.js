@@ -11,6 +11,7 @@ export default defineUserConfig({
 
   theme: defaultTheme({
     logo: '',
+    contributors: false,
 
     navbar: [
       { text: 'E-Bill', link: '/e-bill/' },
