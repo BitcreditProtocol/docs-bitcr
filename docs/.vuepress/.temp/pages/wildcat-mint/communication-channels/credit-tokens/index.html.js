@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/wildcat-mint/communication-channels/credit-tokens/index.html.vue"
-const data = JSON.parse("{\"path\":\"/wildcat-mint/communication-channels/credit-tokens/\",\"title\":\"Credit Tokens\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"wildcat-mint/communication-channels/credit-tokens/README.md\"}")
+const data = JSON.parse("{\"path\":\"/wildcat-mint/communication-channels/credit-tokens/\",\"title\":\"Credit Tokens\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"wildcat-mint/communication-channels/credit-tokens/README.md\",\"excerpt\":\"\\n\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

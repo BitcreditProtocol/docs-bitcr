@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/e-bill/content-of-bill/bill-blockchain-consensus.html.vue"
-const data = JSON.parse("{\"path\":\"/e-bill/content-of-bill/bill-blockchain-consensus.html\",\"title\":\"Bill Blockchain Consensus\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"e-bill/content-of-bill/bill-blockchain-consensus.md\"}")
+const data = JSON.parse("{\"path\":\"/e-bill/content-of-bill/bill-blockchain-consensus.html\",\"title\":\"Bill Blockchain Consensus\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"e-bill/content-of-bill/bill-blockchain-consensus.md\",\"excerpt\":\"\\n\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

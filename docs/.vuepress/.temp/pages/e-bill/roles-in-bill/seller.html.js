@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/e-bill/roles-in-bill/seller.html.vue"
-const data = JSON.parse("{\"path\":\"/e-bill/roles-in-bill/seller.html\",\"title\":\"Seller\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"e-bill/roles-in-bill/seller.md\"}")
+const data = JSON.parse("{\"path\":\"/e-bill/roles-in-bill/seller.html\",\"title\":\"Seller\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"e-bill/roles-in-bill/seller.md\",\"excerpt\":\"\\n\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

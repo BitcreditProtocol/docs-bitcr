@@ -8,6 +8,8 @@ import * as clientConfig6 from '/Users/macintosh/Documents/GitHub/docs-bitcr/doc
 import * as clientConfig7 from '/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/markdown-tab/config.js'
 import * as clientConfig8 from '/Users/macintosh/Documents/GitHub/docs-bitcr/node_modules/@vuepress/plugin-theme-data/lib/client/config.js'
 import * as clientConfig9 from '/Users/macintosh/Documents/GitHub/docs-bitcr/node_modules/@vuepress/theme-default/lib/client/config.js'
+import * as clientConfig10 from '/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/sass-palette/load-hope.js'
+import * as clientConfig11 from '/Users/macintosh/Documents/GitHub/docs-bitcr/node_modules/vuepress-plugin-search-pro/lib/client/config.js'
 
 export const clientConfigs = [
   clientConfig0,
@@ -20,4 +22,6 @@ export const clientConfigs = [
   clientConfig7,
   clientConfig8,
   clientConfig9,
+  clientConfig10,
+  clientConfig11,
 ].map((m) => m.default).filter(Boolean)

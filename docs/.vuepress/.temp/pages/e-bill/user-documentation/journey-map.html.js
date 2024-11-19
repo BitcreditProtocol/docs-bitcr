@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/e-bill/user-documentation/journey-map.html.vue"
-const data = JSON.parse("{\"path\":\"/e-bill/user-documentation/journey-map.html\",\"title\":\"Journey Map\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"e-bill/user-documentation/journey-map.md\"}")
+const data = JSON.parse("{\"path\":\"/e-bill/user-documentation/journey-map.html\",\"title\":\"Journey Map\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"e-bill/user-documentation/journey-map.md\",\"excerpt\":\"\\n\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {
