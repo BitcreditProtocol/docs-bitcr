@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/e-bill/operations/issue/communication-channels.html.vue"
-const data = JSON.parse("{\"path\":\"/e-bill/operations/issue/communication-channels.html\",\"title\":\"Communication Channels\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"e-bill/operations/issue/communication-channels.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/e-bill/operations/issue/communication-channels.html\",\"title\":\"Communication Channels\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"e-bill/operations/issue/communication-channels.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

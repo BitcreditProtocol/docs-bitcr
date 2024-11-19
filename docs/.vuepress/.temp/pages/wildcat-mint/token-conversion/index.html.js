@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/wildcat-mint/token-conversion/index.html.vue"
-const data = JSON.parse("{\"path\":\"/wildcat-mint/token-conversion/\",\"title\":\"Token Conversion\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"wildcat-mint/token-conversion/README.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/wildcat-mint/token-conversion/\",\"title\":\"Token Conversion\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"wildcat-mint/token-conversion/README.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

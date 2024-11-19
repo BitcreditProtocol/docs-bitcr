@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/e-bill/operations/sale/index.html.vue"
-const data = JSON.parse("{\"path\":\"/e-bill/operations/sale/\",\"title\":\"Sale\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"e-bill/operations/sale/README.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/e-bill/operations/sale/\",\"title\":\"Sale\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"e-bill/operations/sale/README.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

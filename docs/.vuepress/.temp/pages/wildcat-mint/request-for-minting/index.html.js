@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/wildcat-mint/request-for-minting/index.html.vue"
-const data = JSON.parse("{\"path\":\"/wildcat-mint/request-for-minting/\",\"title\":\"Request For Minting\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"wildcat-mint/request-for-minting/README.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/wildcat-mint/request-for-minting/\",\"title\":\"Request For Minting\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"wildcat-mint/request-for-minting/README.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

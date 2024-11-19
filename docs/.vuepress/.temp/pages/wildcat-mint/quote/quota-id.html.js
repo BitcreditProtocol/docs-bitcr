@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/wildcat-mint/quote/quota-id.html.vue"
-const data = JSON.parse("{\"path\":\"/wildcat-mint/quote/quota-id.html\",\"title\":\"Quota Id\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"wildcat-mint/quote/quota-id.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/wildcat-mint/quote/quota-id.html\",\"title\":\"Quota Id\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"wildcat-mint/quote/quota-id.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

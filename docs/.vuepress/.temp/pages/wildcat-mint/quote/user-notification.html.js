@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/wildcat-mint/quote/user-notification.html.vue"
-const data = JSON.parse("{\"path\":\"/wildcat-mint/quote/user-notification.html\",\"title\":\"User Notification\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"wildcat-mint/quote/user-notification.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/wildcat-mint/quote/user-notification.html\",\"title\":\"User Notification\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"wildcat-mint/quote/user-notification.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

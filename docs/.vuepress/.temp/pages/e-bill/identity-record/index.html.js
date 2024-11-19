@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/e-bill/identity-record/index.html.vue"
-const data = JSON.parse("{\"path\":\"/e-bill/identity-record/\",\"title\":\"Identity Record\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"e-bill/identity-record/README.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/e-bill/identity-record/\",\"title\":\"Identity Record\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"e-bill/identity-record/README.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

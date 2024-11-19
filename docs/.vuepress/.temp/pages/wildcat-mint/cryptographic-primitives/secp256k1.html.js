@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/wildcat-mint/cryptographic-primitives/secp256k1.html.vue"
-const data = JSON.parse("{\"path\":\"/wildcat-mint/cryptographic-primitives/secp256k1.html\",\"title\":\"Secp256K1\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"wildcat-mint/cryptographic-primitives/secp256k1.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/wildcat-mint/cryptographic-primitives/secp256k1.html\",\"title\":\"Secp256K1\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"wildcat-mint/cryptographic-primitives/secp256k1.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

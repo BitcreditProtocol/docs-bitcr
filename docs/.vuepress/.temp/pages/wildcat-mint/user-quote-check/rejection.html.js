@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/wildcat-mint/user-quote-check/rejection.html.vue"
-const data = JSON.parse("{\"path\":\"/wildcat-mint/user-quote-check/rejection.html\",\"title\":\"Rejection\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"wildcat-mint/user-quote-check/rejection.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/wildcat-mint/user-quote-check/rejection.html\",\"title\":\"Rejection\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"wildcat-mint/user-quote-check/rejection.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {

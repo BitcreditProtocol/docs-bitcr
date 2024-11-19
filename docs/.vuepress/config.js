@@ -272,7 +272,9 @@ export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
       server: {
-        hmr: false, // Disable HMR
+        server: {
+          hmr: false, // Disable HMR
+        },
       },
     },
   }),

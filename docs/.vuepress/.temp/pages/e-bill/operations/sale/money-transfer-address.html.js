@@ -1,5 +1,5 @@
 import comp from "/Users/macintosh/Documents/GitHub/docs-bitcr/docs/.vuepress/.temp/pages/e-bill/operations/sale/money-transfer-address.html.vue"
-const data = JSON.parse("{\"path\":\"/e-bill/operations/sale/money-transfer-address.html\",\"title\":\"Money Transfer Address\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1732052082000},\"filePathRelative\":\"e-bill/operations/sale/money-transfer-address.md\",\"excerpt\":\"\\n\"}")
+const data = JSON.parse("{\"path\":\"/e-bill/operations/sale/money-transfer-address.html\",\"title\":\"Money Transfer Address\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{},\"filePathRelative\":\"e-bill/operations/sale/money-transfer-address.md\"}")
 export { comp, data }
 
 if (import.meta.webpackHot) {
