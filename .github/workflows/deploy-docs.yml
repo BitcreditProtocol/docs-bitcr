@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Clean everything and install dependencies
         run: npm ci
 
