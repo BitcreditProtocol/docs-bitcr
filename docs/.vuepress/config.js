@@ -1,6 +1,7 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import { viteBundler } from '@vuepress/bundler-vite'
+import { searchProPlugin } from "vuepress-plugin-search-pro";
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -12,7 +13,6 @@ export default defineUserConfig({
     logo: '',
 
     navbar: [
-      { text: 'Home', link: '/' },
       { text: 'E-Bill', link: '/e-bill/' },
       { text: 'Wildcat Mint', link: '/wildcat-mint/' },
     ],
@@ -261,6 +261,12 @@ export default defineUserConfig({
       ],
     },
   }),
+  
+  plugins: [
+    searchProPlugin({
+      // your options
+    }),
+  ],
 
   bundler: viteBundler(),
 })
