@@ -1,4 +1,4 @@
-# docs.bitcr
+# docs.bitcr.org
 Bitcredit documentation
 
 ## E-Bill
