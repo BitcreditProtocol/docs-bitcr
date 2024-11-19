@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Clean everthing and install dependencies
-      run: npm ci
+      - name: Clean everything and install dependencies
+        run: npm ci
 
       - name: Build VuePress
         run: npm run docs:build
