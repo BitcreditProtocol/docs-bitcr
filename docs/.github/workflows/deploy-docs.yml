@@ -1,47 +1,30 @@
-
-name: Deploy Docs
+name: Deploy VuePress
 
 on:
   push:
     branches:
-      # make sure this is the branch you are using
       - master
 
-permissions:
-  contents: write
-
 jobs:
-  deploy-gh-pages:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          # if your docs needs submodules, uncomment the following line
-          # submodules: true
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-
-
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: npm
 
-      - name: Install Deps
-        run: npm ci
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build Docs
-        env:
-          NODE_OPTIONS: --max_old_space_size=8192
-        run: |-
-          npm run docs:build
-          > docs/.vuepress/dist/.nojekyll
+      - name: Build VuePress
+        run: npm run docs:build
 
-      - name: Deploy Docs
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # This is the branch where the docs are deployed to
-          branch: gh-pages
-          folder: docs/.vuepress/dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vuepress/dist
