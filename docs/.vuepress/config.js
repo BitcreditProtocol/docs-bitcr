@@ -18,7 +18,7 @@ export default defineUserConfig({
     contributors: false,
     lastUpdated: false,
     colorMode: 'light',
-    colorModeSwitch: false,
+    colorModeSwitch: true,
 
     navbar: [
       { text: 'E-Bill', link: '/e-bill/' },
