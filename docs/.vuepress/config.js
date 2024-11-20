@@ -1,7 +1,7 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import { viteBundler } from '@vuepress/bundler-vite'
-import { searchProPlugin } from "vuepress-plugin-search-pro";
+import { searchPlugin } from '@vuepress/plugin-search'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -263,20 +263,17 @@ export default defineUserConfig({
       ],
     },
   }),
-  
+
   plugins: [
-    searchProPlugin({
-      // Index all content
-      indexContent: true,
-      // Customize the fields to index
-      customFields: [
-        {
-          getter: (page) => page.frontmatter.tags,
-          formatter: "Tag: $content",
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Search',
         },
-      ],
+      },
     }),
   ],
+  
 
   bundler: viteBundler({
     viteOptions: {

@@ -3,8 +3,25 @@
 	--vp-c-accent: #f7931a;
 	--vp-c-accent-hover: #ef8007;
 	--vp-c-accent-text: #fff;
+	--search-c-bg: var(--vp-c-bg);
+  	--search-c-accent: var(--vp-c-accent);
+  	--search-c-text: var(--vp-c-text);
+  	--search-c-border: var(--vp-c-gutter);
+  	--search-c-item-text: var(--vp-c-text-subtle);
+  	--search-c-item-focus: var(--vp-c-bg-alt);
+  	--search-input-width: 8rem;
+  	--search-result-width: 20rem;
 }
 
 .vp-hero-action-button.primary {
 	font-weight: bold;
+}
+
+.search-box input {
+	border: 1px solid var(--vp-c-border) !important;
+	background-color: var(--vp-c-control) !important;
+	color: var(--vp-c-text) !important;
+	padding: 0 .9rem 0 2rem !important;
+	font-size: 1rem !important;
+	width: 150px !important;
 }
