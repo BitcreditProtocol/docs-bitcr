@@ -35,6 +35,8 @@ jobs:
 
       # run build script
       - name: Build VuePress site
+        run: rm -rf dist
+        run: rm -rf docs/.vuepress/search-pro.worker.js
         run: pnpm docs:build
 
       # please check out the docs of the workflow for more details
