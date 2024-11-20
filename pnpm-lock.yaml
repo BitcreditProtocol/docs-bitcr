@@ -31,7 +31,7 @@ importers:
         specifier: ^2.0.0-rc.7
         version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.7(@types/node@22.9.1)(sass@1.81.0))(vue@3.5.13)
       vuepress-plugin-search-pro:
-        specifier: ^2.0.0-rc.59
+        specifier: 2.0.0-rc.59
         version: 2.0.0-rc.59(sass-embedded@1.81.0)(sass@1.81.0)(vuepress@2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.7(@types/node@22.9.1)(sass@1.81.0))(vue@3.5.13))
 
 packages:
