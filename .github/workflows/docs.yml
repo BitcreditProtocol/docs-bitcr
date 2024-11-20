@@ -1,7 +1,7 @@
 name: docs
 
 on:
-  # trigger deployment on every push to the master branch
+  # trigger deployment on every push to main branch
   push:
     branches: [master]
   # trigger deployment manually
@@ -33,20 +33,15 @@ jobs:
 
       # run build script
       - name: Build VuePress site
-        env:
-          NODE_OPTIONS: --max_old_space_size=4096  # Add memory allocation if build fails on large sites
         run: pnpm docs:build
 
-      # ensure all files are generated, including index.map.js
-      - name: Verify build output
-        run: ls -R docs/.vuepress/dist
-
-      # deploy to GitHub Pages
+      # please check out the docs of the workflow for more details
+      # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
         with:
           # deploy to gh-pages branch
-          target_branch: gh-pages
+          target_branch: gh-pages-new
           # deploy the default output dir of VuePress
           build_dir: docs/.vuepress/dist
         env:
