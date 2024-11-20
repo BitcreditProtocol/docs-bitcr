@@ -8,9 +8,6 @@ yarn-error.log*
 # Dependency directories
 node_modules/
 
-# Output directories
-/docs/.vuepress/dist/
-
 # Temp files
 /docs/.vuepress/.temp/
 /docs/.vuepress/.cache/
