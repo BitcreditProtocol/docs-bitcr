@@ -10,9 +10,15 @@ export default defineUserConfig({
   description: 'Comprehensive documentation for Bitcredit',
   base: '/docs-bitcr/',
 
+  head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
+
   theme: defaultTheme({
-    logo: '',
+    logo: 'logo.png',
+    //logoDark: 'logo.png',
     contributors: false,
+    lastUpdated: false,
+    colorMode: 'light',
+    colorModeSwitch: false,
 
     navbar: [
       { text: 'E-Bill', link: '/e-bill/' },

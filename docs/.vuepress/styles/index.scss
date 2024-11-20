@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
 :root {
+	scroll-behavior: smooth;
 	--vp-c-accent-bg: #f7931a;
 	--vp-c-accent: #f7931a;
 	--vp-c-accent-hover: #ef8007;
 	--vp-c-accent-text: #000;
+	--font-family: "Mulish", sans-serif;
 	--search-c-bg: var(--vp-c-bg);
   	--search-c-accent: var(--vp-c-accent);
   	--search-c-text: var(--vp-c-text);
@@ -13,8 +17,26 @@
   	--search-result-width: 20rem;
 }
 
+body {
+	font-size: 1.1rem;
+}
+
+a {
+	font-weight: inherit;
+}
+
+.vp-navbar-items a {
+	font-size: 1rem;
+	font-weight:800;
+}
+.vp-hero-action-button {
+	padding: 0.3rem 1.6rem;
+}
 .vp-hero-action-button.primary {
 	font-weight: bold;
+}
+.vp-site-name {
+	display:none;
 }
 
 .search-box input {
@@ -24,4 +46,11 @@
 	padding: 0 .9rem 0 2rem !important;
 	font-size: 1rem !important;
 	width: 150px !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 800;
+}
+h1 {
+	color: var(--vp-c-accent) !important;
 }
