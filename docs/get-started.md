@@ -14,6 +14,8 @@ Every markdown file [will be rendered to HTML, then converted to a Vue SFC][cont
 
 VuePress support basic markdown syntax and [some extensions][synatex-extensions], you can also [use Vue features][vue-feature] in it.
 
+Find all the content under docs folder and subfolders in .md file. Edit them in .md format.
+
 ## Configuration
 
 VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
@@ -44,3 +46,20 @@ You can [add extra style][style] with `.vuepress/styles/index.scss` file.
 [sidebar]: https://vuejs.press/reference/default-theme/config.html#sidebar
 [default-theme]: https://vuejs.press/reference/default-theme/
 [style]: https://vuejs.press/reference/default-theme/styles.html#style-file
+
+
+## Run on Localhost
+
+1. Clone the master repository from github
+2. Open terminal
+3. cd to the folder
+4. npm install
+5. pnpm install
+6. pnpm run docs:dev
+
+On file save the page reloads with the updated content. If not press ctrl + c in the terminal window and pnpm run docs:dev
+If you update the .vuepress/styles/index.scss you must rebuild the files in terminal:
+1. ctrl + c
+2. pnpm run docs:build
+3. pnpm run docs:dev
+4. Empty browser cache
