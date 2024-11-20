@@ -27,16 +27,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
-
-      # Clean .temp and .cache folders
-      - name: Clean .temp and .cache
-        run: |
-          rm -rf .temp
-          rm -rf .cache
 
       # run build script
       - name: Build VuePress site
