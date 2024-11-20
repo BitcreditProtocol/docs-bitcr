@@ -31,9 +31,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Clear Dist folder
-        run: rm -rf docs/.vuepress/dist
-
       # run build script
       - name: Build VuePress site
         run: pnpm docs:build
