@@ -28,6 +28,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Clear Dist folder
+        run: rm -rf docs/.vuepress/dist
+
       - name: Install dependencies
         run: pnpm install
 
