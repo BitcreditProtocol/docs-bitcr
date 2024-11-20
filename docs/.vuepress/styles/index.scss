@@ -17,6 +17,10 @@
   	--search-result-width: 20rem;
 }
 
+html[data-theme=dark] {
+	--vp-navbar-c-bg: #000;
+}
+
 body {
 	font-size: 1.1rem;
 }

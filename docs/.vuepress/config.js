@@ -14,7 +14,7 @@ export default defineUserConfig({
 
   theme: defaultTheme({
     logo: 'images/logo.png',
-    //logoDark: 'images/logo.png',
+    logoDark: 'images/logo_dark.png',
     contributors: false,
     lastUpdated: false,
     colorMode: 'light',
