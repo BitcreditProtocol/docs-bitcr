@@ -18,20 +18,19 @@ jobs:
           fetch-depth: 0
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          # choose pnpm version to use
           version: 9
-          # install deps with pnpm
           run_install: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # choose node.js version to use
           node-version: 20
-          # cache deps for pnpm
-          cache: pnpm
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Clear dist folder
         run: rm -rf dist
