@@ -8,7 +8,7 @@ export default defineUserConfig({
 
   title: 'Bitcredit Documentation',
   description: 'Comprehensive documentation for Bitcredit',
-  base: '/docs-bitcr/',
+  // base: '/docs-bitcr/', // not needed for custom domain deployment
 
   head: [['link', { rel: 'icon', href: 'images/favicon.ico' }]],
 
