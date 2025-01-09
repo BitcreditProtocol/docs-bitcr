@@ -11,4 +11,4 @@ actions:
     link: /wildcat-mint/
     type: primary
 
-footer: Copyright © 2024 Bitcredit
+footer: Copyright © 2025 Bitcredit
