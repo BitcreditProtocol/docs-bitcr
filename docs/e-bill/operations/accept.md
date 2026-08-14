@@ -5,7 +5,7 @@ and it is what turns a bill drawn *on* someone into a debt owed *by* them.
 
 ## Who may perform it
 
-The **payer** — the drawee named at issue.
+The **payer**, the drawee named at issue.
 
 ## Conditions
 
@@ -28,7 +28,7 @@ An `Accept` block. The bill is accepted, and unblocked if a request was open.
 Two consequences follow immediately:
 
 - The holder may now [mint](mint.md) the bill. Minting is the one action gated on acceptance.
-- The acceptance path is closed permanently. An accepted bill cannot later be rejected —
+- The acceptance path is closed permanently. An accepted bill cannot later be rejected, because
   `RejectToAccept` requires that the bill is not already accepted.
 
 ## Rejecting acceptance
@@ -52,7 +52,7 @@ Like acceptance, rejection does not require a request to have been made.
 ### Result
 
 A `RejectToAccept` block, and the bill becomes **only recoursable**. From this point the sole
-remaining actions are `RequestRecourse`, `Recourse` and `RejectToPayRecourse` — the bill cannot be
+remaining actions are `RequestRecourse`, `Recourse` and `RejectToPayRecourse`; the bill cannot be
 endorsed, sold, minted or requested to pay.
 
 Rejecting acceptance is therefore not a neutral act. It does not merely decline a request; it ends
@@ -65,6 +65,6 @@ of actions. They can [request acceptance](request-to-accept.md) and then accept 
 
 ## Next
 
-- [Request to pay](request-to-pay.md) — the next step for an accepted bill at maturity.
-- [Mint](mint.md) — now unlocked.
-- [Recourse](recourse.md) — the path after a rejection.
+- [Request to pay](request-to-pay.md): the next step for an accepted bill at maturity.
+- [Mint](mint.md): now unlocked.
+- [Recourse](recourse.md): the path after a rejection.

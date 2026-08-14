@@ -10,7 +10,7 @@ protocol maintains on top of them.
    - **Must be an identified party.** An anonymous identity cannot issue a bill.
 
 2. **Drawee**
-   - The party the bill is drawn against — the one asked to accept and to pay.
+   - The party the bill is drawn against: the one asked to accept and to pay.
    - **Must be an identified party.**
    - Cannot be the same entity as the payee at the time of issue.
 
@@ -32,7 +32,7 @@ protocol maintains on top of them.
 The distinction in 1–4 is enforced by the types themselves, not by a check that could be
 forgotten: drawer and drawee are declared as *identified* participants, while payee and endorsee
 are declared as participants that may be either. A bill with an anonymous drawee does not fail
-validation — it cannot be constructed.
+validation; it cannot be constructed.
 
 ## Terms
 
@@ -53,7 +53,7 @@ validation — it cannot be constructed.
     - Where the bill was issued.
 
 11. **Country and city of payment**
-    - Where it is payable. Not necessarily where it was issued — a bill drawn in Austria may be
+    - Where it is payable. Not necessarily where it was issued: a bill drawn in Austria may be
       payable in Singapore.
 
 12. **Files**
@@ -84,5 +84,5 @@ validation — it cannot be constructed.
 Field names and optionality read from
 [`crates/bcr-ebill-wasm/src/data/bill.rs`](https://github.com/BitcreditProtocol/Bitcredit-Core/blob/main/crates/bcr-ebill-wasm/src/data/bill.rs).
 The bill also carries a `current_waiting_state` field which is marked for deprecation in the
-source and is deliberately not documented here — use the state fields instead.
+source and is deliberately not documented here. Use the state fields instead.
 :::

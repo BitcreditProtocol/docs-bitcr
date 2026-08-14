@@ -30,12 +30,12 @@ Minting is an offer and an acceptance, like a [sale](sale.md), but the negotiati
 bill:
 
 1. **Request a quote.** The holder asks a mint to quote on the bill. This shares the bill with the
-   mint so it can make a decision — *without* handing over the bill keys, so the mint can read the
+   mint so it can make a decision, *without* handing over the bill keys, so the mint can read the
    chain but not write to it. See [Sharing bills](../transport/sharing-bills.md).
 2. **Accept the quote.** If the holder accepts, a `Mint` block is written and the bill is endorsed
    to the mint.
 
-Between those steps the bill carries a **mint state** — `requested to mint` — visible only to the
+Between those steps the bill carries a **mint state** of `requested to mint`, visible only to the
 current holder. See [Bill states](../concepts/bill-states.md).
 
 ## Result
@@ -45,22 +45,22 @@ former holder becomes a **contingent** participant: still liable on the bill, an
 instead of a bill.
 
 The drawee now settles with the mint rather than with the original payee. Nothing about the drawee's
-obligation changes — they owe the same sum on the same date to whoever holds the bill, and that is
+obligation changes: they owe the same sum on the same date to whoever holds the bill, and that is
 now the mint.
 
 ## Why the mint can verify what it was given
 
 When the holder later endorses the bill to the mint for real, the mint can compare it block by block
-against the read-only copy it was shown when quoting — matching block hashes and plaintext hashes —
+against the read-only copy it was shown when quoting, matching block hashes and plaintext hashes,
 and confirm it is the same bill it priced. A holder cannot get a quote on one bill and deliver
 another.
 
 ## What the mint does next
 
 That is [Wildcat's side of the story](../../wildcat-mint/): the mint splits the bill's value into
-e-cash units, each carrying the two attributes that matter — who owes it, and when it falls due.
+e-cash units, each carrying the two attributes that matter: who owes it, and when it falls due.
 
 ## Next
 
-- [Wildcat Mint](../../wildcat-mint/) — what happens to the bill after it is minted.
-- [Sharing bills](../transport/sharing-bills.md) — how a mint reads a bill it does not own.
+- [Wildcat Mint](../../wildcat-mint/): what happens to the bill after it is minted.
+- [Sharing bills](../transport/sharing-bills.md): how a mint reads a bill it does not own.

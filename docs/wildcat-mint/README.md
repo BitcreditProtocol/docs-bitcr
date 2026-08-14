@@ -4,13 +4,13 @@ A **Wildcat** is a credit mint: an operator running the open-source Wildcat soft
 accepted [e-bill](../e-bill/) before it matures and turns it into e-cash.
 
 It is a business, not an office of the protocol. Anyone can run one, competing mints quote against
-each other, and nobody has to be contracted with in order to use bills at all — minting is one thing
+each other, and nobody has to be contracted with in order to use bills at all. Minting is one thing
 a holder may choose to do with a bill, not a step in its life.
 
 ::: tip Scope of this section
 These pages cover Wildcat at an overview level: what a mint is, what a credit token is, and the
-shape of the quoting process. The internal specifications — the quote state machine, service
-topology, keyset derivation and API surface — live in Bitcredit's internal `internal_cats`
+shape of the quoting process. The internal specifications for the quote state machine, service
+topology, keyset derivation and API surface live in Bitcredit's internal `internal_cats`
 repository and are not published here.
 :::
 
@@ -20,7 +20,7 @@ An accepted e-bill is sound value in an awkward shape. It is one lump with one m
 you cannot pay eleven workers and a diesel bill with a single instrument due in ninety days.
 
 A mint fixes the shape. It takes the bill, holds it to maturity, and splits it into e-cash spendable
-in any denomination — the job specialist discount houses did for merchant bills two centuries ago,
+in any denomination: the job specialist discount houses did for merchant bills two centuries ago,
 without the building.
 
 ## What is negotiated
@@ -63,11 +63,11 @@ not matter to whoever accepts it. See [Credit tokens](credit-tokens.md).
 
 ## Pages in this section
 
-- [Credit tokens](credit-tokens.md) — what a unit of e-cash is and why it travels.
-- [Quote lifecycle](quote-lifecycle.md) — request, offer, accept, mint.
-- [Cryptographic primitives](cryptographic-primitives.md) — Cashu and Secp256k1.
+- [Credit tokens](credit-tokens.md): what a unit of e-cash is and why it travels.
+- [Quote lifecycle](quote-lifecycle.md): request, offer, accept, mint.
+- [Cryptographic primitives](cryptographic-primitives.md): Cashu and Secp256k1.
 
 ## From the bill's side
 
-For what minting does to the bill itself — the conditions, the block written, and who the drawee owes
-afterwards — see [Mint](../e-bill/operations/mint.md).
+For what minting does to the bill itself, including the conditions, the block written and who the
+drawee owes afterwards, see [Mint](../e-bill/operations/mint.md).

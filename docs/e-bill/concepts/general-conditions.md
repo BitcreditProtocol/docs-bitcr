@@ -2,7 +2,7 @@
 
 Four conditions gate almost every action on a bill. They are stated once here because the
 operation pages reference them constantly, and because most of the preconditions in the
-specification are *only* these conditions — nothing more specific is spelled out.
+specification are *only* these conditions, with nothing more specific spelled out.
 
 ## The four conditions
 
@@ -24,7 +24,7 @@ and `RejectToPayRecourse`. Ordinary circulation is over; what remains is assigni
 
 ### blocked
 
-The bill is in a *waiting state* — something has been requested and has not yet resolved. While
+The bill is in a *waiting state*: something has been requested and has not yet resolved. While
 blocked, the only actions permitted are the ones that resolve the wait:
 
 | Waiting for | Triggered by | Resolved by |
@@ -36,7 +36,7 @@ blocked, the only actions permitted are the ones that resolve the wait:
 ## Why the preconditions look so short
 
 The specification lists `RequestToPay`'s only condition as "the bill can't be **blocked**,
-**recoursed to the end**, **only recoursable**, or **paid**" — and says nothing about not
+**recoursed to the end**, **only recoursable**, or **paid**", and says nothing about not
 requesting payment twice. That is not an omission.
 
 A `RequestToPay` can only end in one of three ways: the bill gets paid (**paid**), the deadline
@@ -63,24 +63,24 @@ realistically meet.
 
 What expiry does depends on the action:
 
-- **Offer to sell expires** — the offer is invalidated and the bill is unblocked. Circulation
+- **Offer to sell expires.** The offer is invalidated and the bill is unblocked. Circulation
   continues as before.
-- **Request to recourse expires** — the bill is unblocked and can be requested to recourse
+- **Request to recourse expires.** The bill is unblocked and can be requested to recourse
   again.
-- **Request to accept or to pay expires** — the bill becomes **only recoursable**. This is the
+- **Request to accept or to pay expires.** The bill becomes **only recoursable**. This is the
   one case where a deadline passing changes the bill's fate rather than just releasing it.
 
 ### The maturity-date subtlety in `RequestToPay`
 
 If payment is requested **before** the bill's maturity date, the bill is blocked until the
 requested deadline, and when that deadline passes the bill simply unblocks. The real expiry in
-that case is **48 hours after the maturity date**, at UTC end of day — not the deadline the
+that case is **48 hours after the maturity date**, at UTC end of day, not the deadline the
 requester set.
 
 If payment is requested **after** maturity, the deadline is exactly the one the requester set.
 
 ## Special case: holder is also the payer
 
-If one identity is both the current holder and the payer — for example because the bill was
-endorsed back to the drawee — they may perform both holder and payer actions. They can
+If one identity is both the current holder and the payer, for example because the bill was
+endorsed back to the drawee, they may perform both holder and payer actions. They can
 `RequestToAccept` and then `Accept` the same bill.

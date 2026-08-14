@@ -28,7 +28,7 @@ Whether the bill has been paid:
 
 ### Recourse
 
-Visible to the current and past parties of a recourse — the recourser, who is the holder, and
+Visible to the current and past parties of a recourse: the recourser, who is the holder, and
 the recoursee, who is an earlier holder. A bill can be recoursed more than once in its life, so
 this is a **list** of states, latest first:
 
@@ -57,17 +57,17 @@ Visible only to the current holder:
 
 Alongside states, the API tells a caller what they should *do* about money. There are two:
 
-**Pay** — the bill is waiting for a payment from this caller. Carries what is needed to make it:
+**Pay.** The bill is waiting for a payment from this caller. Carries what is needed to make it:
 the type of payment (`Pay`, `Sell`, `Recourse`), the receiver, the time of request, currency and
 sum, a payment link, the Bitcoin address to pay, a mempool link for tracking it, the transaction
 id, whether it is in the mempool, how many confirmations it has, and the payment deadline.
 
-**Check Payment** — the caller is the receiver of a current or past payment. Carries the same
+**Check Payment.** The caller is the receiver of a current or past payment. Carries the same
 fields for each payment, ordered latest first, plus the sender, the private descriptor needed to
 spend the received funds, and a status: waiting, paid, rejected or expired, with timestamps.
 
 Note that paying is not an action that writes a block. The system watches the chain, and sets a
-flag on the bill when the payment arrives — see [Pay](../operations/pay.md).
+flag on the bill when the payment arrives. See [Pay](../operations/pay.md).
 
 ## What each role sees
 

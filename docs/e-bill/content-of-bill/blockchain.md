@@ -1,7 +1,7 @@
 # The bill blockchain
 
 A bill is a chain of signed blocks. The fields on
-[Field description](field-description.md) are not stored as a record someone edits — they are what
+[Field description](field-description.md) are not stored as a record someone edits. They are what
 you get by replaying the chain from its first block.
 
 ## What a block holds
@@ -21,7 +21,7 @@ you get by replaying the chain from its first block.
 
 Two hashes rather than one is the detail that matters. `hash` chains the blocks together;
 `plaintext_hash` commits to the *unencrypted* content. Without the second, a bill could only be
-handed to someone by handing over the keys — because there would be no way to prove that a
+handed to someone by handing over the keys, because there would be no way to prove that a
 plaintext rendering matched the ciphertext it claimed to come from. With it, a bill can be shared
 read-only and still be fully checkable. See [Sharing bills](../transport/sharing-bills.md).
 
@@ -38,7 +38,7 @@ Every block carries one op code:
 | `RequestRecourse` | | `RejectToPayRecourse` |
 
 Note what is **not** in the list: there is no `Pay`. Paying a bill does not append a block. The
-system watches for the payment and sets a flag when it arrives — which is why payment is the one
+system watches for the payment and sets a flag when it arrives, which is why payment is the one
 outcome that cannot be forged by writing to the chain. See [Pay](../operations/pay.md).
 
 ## Consensus
@@ -64,6 +64,6 @@ itself, which each of them can check alone.
 ## Who holds the chain
 
 Every participant holds the blocks for the bills they are party to, and the encrypted chain is
-also held on Nostr relays — which is what makes [restoring an
+also held on Nostr relays, which is what makes [restoring an
 account](../identity-record/identity-restore-transfer.md) from a seed phrase possible. The relay
 stores ciphertext; the keys stay with the participants. See [Transport](../transport/).

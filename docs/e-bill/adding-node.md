@@ -21,8 +21,8 @@ publish somebody else.
 ## Private contact information
 
 Public profile data is the small part. The fields on an
-[identity record](identity-record/field-description.md) — postal address, date and place of birth,
-identification number, identity documents — are not broadcast.
+[identity record](identity-record/field-description.md), such as postal address, date and place of
+birth, identification number and identity documents, are not broadcast.
 
 Sharing those is a deliberate act, and it works by **sharing derived keys over a private
 message**. Rather than sending the data itself, the client sends the keys that decrypt it. Two
@@ -46,5 +46,5 @@ issue.
 ## Companies
 
 A company is addressed by a node id in exactly the same format as a person, and is added as a
-contact the same way. What differs is the record behind it — and that a client can act as either
+contact the same way. What differs is the record behind it, and that a client can act as either
 a person or a company, switching between the identities it holds.

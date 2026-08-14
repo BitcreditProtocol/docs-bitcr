@@ -60,8 +60,8 @@ In the browser, SurrealDB is backed by IndexedDB. There are three ways to get ba
 
 ::: warning A blank slate is a lost identity
 Clearing local state destroys the keys stored there. Without the
-[seed phrase](../identity-record/identity-restore-transfer.md) the identity — and every bill it was
-party to — is unrecoverable. On testnet this is a convenience. Anywhere else it is not.
+[seed phrase](../identity-record/identity-restore-transfer.md) the identity, and every bill it was
+party to, is unrecoverable. On testnet this is a convenience. Anywhere else it is not.
 :::
 
 ## Which network you are on

@@ -15,7 +15,7 @@ Bitcredit's first transport was a distributed hash table built on
 - Each bill had a **topic** in the DHT, and participants joined the topic to publish and receive
   events for that bill.
 - Nodes joined the network through bootstrap peers, then put and fetched events by key.
-- **DCUtR** — Direct Connection Upgrade through Relay — was used to get peers into direct
+- **DCUtR**, Direct Connection Upgrade through Relay, was used to get peers into direct
   connection with one another after meeting through a relay, for cases where neither could accept
   inbound connections.
 - Relay nodes existed to make that hole-punching possible.
@@ -44,8 +44,8 @@ somewhere durable to keep encrypted blocks, and a DHT is an expensive way to buy
   requirement for peers to reach each other at all removed a whole class of failure that no amount
   of hole-punching fully solves.
 - **Availability.** A DHT keeps data available by keeping enough peers online. Relays are simply
-  servers, and a participant can publish to several. Neither approach trusts the storage — the
-  blocks are encrypted either way — so the simpler one wins.
+  servers, and a participant can publish to several. Neither approach trusts the storage, since the
+  blocks are encrypted either way, so the simpler one wins.
 - **One key scheme.** Using Secp256k1 everywhere means a participant's node id, their Nostr npub,
   their encryption key and the Bitcoin addresses that settle their bills all derive from one key
   pair. The DHT design needed ed25519 *and* RSA *and* Secp256k1, and kept them in step by hand.
@@ -53,7 +53,7 @@ somewhere durable to keep encrypted blocks, and a DHT is an expensive way to buy
   messages and file storage conventions. None of that had to be built.
 
 The through-line: the DHT was solving a distribution problem the protocol did not have, while the
-real problem — proving a chain of signed blocks is valid — is solved by the
+real problem, proving a chain of signed blocks is valid, is solved by the
 [validation rules](../concepts/validation.md) and not by the transport at all. Once that is clear,
 the transport can be the boring option.
 

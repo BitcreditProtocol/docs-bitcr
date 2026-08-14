@@ -9,7 +9,7 @@ There are two mechanisms, depending on whether the bill keys go along.
 ## Without bill keys
 
 The hard case, and the interesting one. The receiver gets a readable rendering of the bill *and* the
-original encrypted blocks, and can prove the two agree — without ever holding the key that would let
+original encrypted blocks, and can prove the two agree, without ever holding the key that would let
 them write.
 
 ### What the sharer does
@@ -33,20 +33,20 @@ them write.
 3. Decrypt the payload and check the hash matches the decrypted data.
 4. Rebuild a blockchain from the blocks, running every integrity check that applies to an encrypted
    bill chain.
-5. **Compare each block's `plaintext_hash` against the plaintext data supplied for it** — so the
+5. **Compare each block's `plaintext_hash` against the plaintext data supplied for it**, so the
    encrypted and unencrypted versions must be the same data.
 6. Verify the payload signature belongs to the holder the bill data claims it does.
 7. Download the shared files, decrypt them, and validate them against the file hashes in the bill.
 
 Step 5 is the mechanism the whole thing rests on. Because every block commits to a hash of its own
-plaintext — see [The bill blockchain](../content-of-bill/blockchain.md) — a sharer cannot supply a
+plaintext (see [The bill blockchain](../content-of-bill/blockchain.md)), a sharer cannot supply a
 flattering plaintext alongside genuine ciphertext. The hashes would not match.
 
 ### Why a mint can trust what it later receives
 
 If the mint quotes, the holder accepts, and the bill is [minted](../operations/mint.md) to it, the
-mint can compare the bill it now holds against the copy it was shown — block hashes and plaintext
-hashes both — and confirm it is the same bill it priced.
+mint can compare the bill it now holds against the copy it was shown, block hashes and plaintext
+hashes both, and confirm it is the same bill it priced.
 
 A holder cannot get a quote on a good bill and deliver a different one.
 
@@ -57,7 +57,7 @@ it.
 
 Block hashes, the integrity checks between blocks, and the plaintext hashes within them are enough
 for the receiver to confirm that the chain is valid **and** that the entity sharing it had the right
-to — that they were the holder.
+to, namely that they were the holder.
 
 ## Which to use
 

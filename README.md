@@ -5,9 +5,9 @@ Bitcredit documentation. A [VuePress](https://vuejs.press/) site published to
 
 It documents two things:
 
-- **E-Bill** — the electronic bill of exchange: its identifiers, its content, and every
+- **E-Bill**: the electronic bill of exchange, covering its identifiers, its content, and every
   operation a participant can perform on it.
-- **Wildcat Mint** — what a Wildcat is and what it does with a bill, at an overview level.
+- **Wildcat Mint**: what a Wildcat is and what it does with a bill, at an overview level.
 
 ## Where the content comes from
 
@@ -24,7 +24,7 @@ a page that cannot cite one of them does not get written:
 | [`Bitcredit-Core/docs/`](https://github.com/BitcreditProtocol/Bitcredit-Core/tree/main/docs) | prerequisites, configuration, WASM, versioning |
 | [bit.cr](https://bit.cr) and [bitcr.org](https://bitcr.org) | Wildcat overview, glossary, FAQ |
 
-[CATS](https://github.com/BitcreditProtocol/cats) — the Credit Assurance Token Standard — is
+[CATS](https://github.com/BitcreditProtocol/cats), the Credit Assurance Token Standard, is
 the specification. When this site and CATS disagree, CATS is right and this site is a bug.
 
 ## House rules
@@ -39,6 +39,9 @@ the specification. When this site and CATS disagree, CATS is right and this site
    `operations/README.md` and are linked, not restated ten times.
 4. **A page with only a heading is worse than no page.** It costs a reader a click to learn
    nothing. Leave it out of the sidebar and record the gap below instead.
+5. **No em dashes.** Use a colon, a semicolon, a comma pair, or a full stop, and rewrite the
+   sentence around whichever you pick rather than swapping the character. Most of the time the
+   clause after the dash can stand on its own as a sentence, which reads better than either.
 
 ## Running locally
 
