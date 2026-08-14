@@ -18,10 +18,5 @@
     "sass-embedded": "^1.81.0",
     "vue": "^3.5.13",
     "vuepress": "^2.0.0-rc.18"
-  },
-  "dependencies": {
-    "20": "^3.1.9",
-    "@vueuse/core": "^11.2.0",
-    "pnpm": "^9.14.2"
   }
 }
