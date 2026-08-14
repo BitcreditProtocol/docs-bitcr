@@ -11,6 +11,10 @@ jobs:
   docs:
     runs-on: ubuntu-latest
 
+    # ghaction-github-pages pushes the built site to the gh-pages branch
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
         with:
