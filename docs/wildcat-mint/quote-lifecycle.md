@@ -17,7 +17,7 @@ alongside the original encrypted blocks, encrypted to the mint's own public key,
 handed over. The mint can verify every claim and cannot write a single block. See
 [Sharing bills](../e-bill/transport/sharing-bills.md).
 
-The bill must already be accepted — the drawee's acknowledgement is a
+The bill must already be accepted: the drawee's acknowledgement is a
 [protocol-level precondition for minting](../e-bill/operations/mint.md), not each mint's policy.
 
 ## 2. Offer
@@ -28,7 +28,7 @@ An offer discounts the bill's face value by a **minting fee**, which is a functi
 mint must wait for maturity. Offers carry an expiry date.
 
 Whether to offer at all is a credit decision about the drawee, and it is the mint's business
-judgement — which is what mints compete on.
+judgement, which is what mints compete on.
 
 ## 3. Accept or reject
 

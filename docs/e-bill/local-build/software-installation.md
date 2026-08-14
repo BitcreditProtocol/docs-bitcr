@@ -44,4 +44,4 @@ To serve the built WASM artifacts, any static server will do.
 
 ## Next
 
-[Startup parameters](startup-parameters.md) — building and running what you have just installed.
+[Startup parameters](startup-parameters.md): building and running what you have just installed.

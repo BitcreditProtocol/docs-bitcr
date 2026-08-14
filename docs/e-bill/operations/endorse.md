@@ -12,7 +12,7 @@ The **holder**, who becomes the **endorser** of this endorsement.
   or **paid**.
 
 That is all. Endorsement does not require the bill to be accepted, does not set a deadline, and
-does not wait for anything — which is what makes it the mechanism by which a bill circulates as
+does not wait for anything, which is what makes it the mechanism by which a bill circulates as
 money rather than as a contract to be renegotiated at each step.
 
 ## Result
@@ -42,7 +42,7 @@ Nothing prevents a bill being endorsed back to someone who held it before, inclu
 Two consequences:
 
 - If the endorsee is the **drawee**, that identity now holds both holder and payer roles and gets
-  both sets of actions — they can [request acceptance](request-to-accept.md) and then
+  both sets of actions: they can [request acceptance](request-to-accept.md) and then
   [accept](accept.md).
 - For [recourse](recourse.md), a participant can only claim against holders who held the bill
   *before their own first time holding it*. Coming back round the chain does not enlarge the set of
@@ -50,6 +50,6 @@ Two consequences:
 
 ## Next
 
-- [Sale](sale.md) — transferring for money rather than as payment.
-- [Mint](mint.md) — transferring to a mint for e-cash.
-- [Recourse](recourse.md) — what the endorsement chain is for when a bill goes bad.
+- [Sale](sale.md): transferring for money rather than as payment.
+- [Mint](mint.md): transferring to a mint for e-cash.
+- [Recourse](recourse.md): what the endorsement chain is for when a bill goes bad.

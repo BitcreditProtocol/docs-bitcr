@@ -46,19 +46,19 @@ The fields of an identity record, as the client exposes them.
    - Field type: File upload
 
 Uploaded files are not stored as bytes on the record. Each one is held as a name, a SHA-256 hash
-of the content, and the hash under which it is stored on Nostr — so the record commits to the
+of the content, and the hash under which it is stored on Nostr, so the record commits to the
 file's content without containing it. See [Backing up user material](upload-user-material.md).
 
 ## Generated, not entered
 
 These are part of the record but no one types them in:
 
-10. **Identity type** — `Ident` for an identified party, `Anon` for an anonymous one. Neither
+10. **Identity type.** `Ident` for an identified party, `Anon` for an anonymous one. Neither
     the issuer nor the payer of a bill may be anonymous.
-11. **Node id** — the identity's identifier. See [Identity record](./).
-12. **Bitcoin public key** — the Secp256k1 public key behind the node id.
-13. **Nostr public key (npub)** — derived from the same key, used by the transport layer.
-14. **Nostr relays** — the relays this identity publishes to and is reachable through.
+11. **Node id.** The identity's identifier. See [Identity record](./).
+12. **Bitcoin public key.** The Secp256k1 public key behind the node id.
+13. **Nostr public key (npub).** Derived from the same key, used by the transport layer.
+14. **Nostr relays.** The relays this identity publishes to and is reachable through.
 
 ::: warning Verify before relying on this
 The field list above was read from

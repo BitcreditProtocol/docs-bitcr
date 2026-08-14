@@ -1,6 +1,6 @@
 # Credit tokens
 
-The unit a mint issues against a bill. Bearer, private, non-custodial digital cash — spendable
+The unit a mint issues against a bill. Bearer, private, non-custodial digital cash, spendable
 instantly, in person or online.
 
 ## Credit sats and debit sats
@@ -29,7 +29,7 @@ This is what lets Wildcats recognise each other's units. A mint receiving a unit
 see what stands behind it, which is why e-cash from one mint spends against any other and where a
 unit was minted does not matter to whoever accepts it.
 
-Mints settle between themselves — the network of them is called a **clowder** — so e-cash minted in
+Mints settle between themselves, and the network of them is called a **clowder**, so e-cash minted in
 Austria pays a supplier in China.
 
 ## Redemption
@@ -40,14 +40,14 @@ mainchain.
 The fee is taken once, at the start, when the bill is minted. What you hold afterwards does not
 decay: there is no carry, no demurrage, and no second bite at maturity.
 
-This is the **Law of Reflux** in operation — credit money issued against real value flows back to its
+This is the **Law of Reflux** in operation: credit money issued against real value flows back to its
 issuer and is extinguished at maturity, which is why the supply cannot inflate. A unit of e-cash is
 not a claim that persists; it is a claim with an expiry built into the instrument behind it.
 
 ## Melting
 
 Taking e-cash out into outright Bitcoin before maturity is called **melting**. The fee for it is set
-by the mint that issued the unit, not by the protocol — so it is worth comparing melt fees when
+by the mint that issued the unit, not by the protocol, so it is worth comparing melt fees when
 choosing a mint, alongside minting fees and guarantee ratios.
 
 ## What a payment costs

@@ -16,7 +16,7 @@ identifier was created on:
 | `s` | Signet |
 
 Because the network is part of the identifier, a testnet identity and a mainnet identity are not
-merely distinguishable — they cannot be confused for one another by any code that reads the
+merely distinguishable; they cannot be confused for one another by any code that reads the
 string.
 
 ## NodeId
@@ -54,16 +54,16 @@ A bill has its own key pair, distinct from any participant's. See
 
 Beyond these internal identifiers, the transport layer addresses participants by Nostr npub.
 An npub is **derived from the same Secp256k1 public key**, so it is not a second identity to
-keep in sync — it is the same key wearing the clothes Nostr expects. See
+keep in sync. It is the same key wearing the clothes Nostr expects. See
 [Transport](../transport/).
 
 ## Identified and anonymous identities
 
 An identity is one of two types:
 
-- **Ident** — an identified party, with the name and address fields described in
+- **Ident**: an identified party, with the name and address fields described in
   [Field description](field-description.md).
-- **Anon** — an anonymous party.
+- **Anon**: an anonymous party.
 
 Anonymity is not available everywhere. Neither the issuer nor the payer of a bill may be
 anonymous, which follows from a bill being an enforceable obligation: someone has to be
@@ -73,14 +73,14 @@ matter.
 ## Companies
 
 A company is addressed by a NodeId in exactly the same format as a person. What differs is the
-record behind it, and which identity a client is currently acting as — a client can switch
+record behind it, and which identity a client is currently acting as. A client can switch
 between acting as a person and acting as a company.
 
 ## Pages in this section
 
-- [Field description](field-description.md) — the fields of an identity record.
-- [Identity restore and transfer](identity-restore-transfer.md) — the seed phrase, and moving an
+- [Field description](field-description.md): the fields of an identity record.
+- [Identity restore and transfer](identity-restore-transfer.md): the seed phrase, and moving an
   identity between devices.
-- [Cryptographic primitives](../cryptographic-primitives/) — the key and encryption schemes
+- [Cryptographic primitives](../cryptographic-primitives/): the key and encryption schemes
   behind all of this.
-- [Backing up user material](upload-user-material.md) — getting files off a device.
+- [Backing up user material](upload-user-material.md): getting files off a device.

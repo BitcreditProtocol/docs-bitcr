@@ -3,7 +3,7 @@
 Acceptance is the drawee putting their signature on the obligation. Requesting it asks them to.
 
 A bill can circulate without ever being accepted, but an unaccepted bill is a weaker instrument:
-the drawee has not yet acknowledged the debt, and a mint will not take one — [minting requires an
+the drawee has not yet acknowledged the debt, and a mint will not take one: [minting requires an
 accepted bill](mint.md).
 
 ## Who may perform it
@@ -23,7 +23,7 @@ once it has been accepted or rejected, that is final.
 
 ## Deadline
 
-The holder sets a deadline. The floor is the **UTC end of day of the request plus 48 hours** — the
+The holder sets a deadline. The floor is the **UTC end of day of the request plus 48 hours**; the
 drawee cannot be given less than that to respond.
 
 While the request is open the bill is **blocked**. Three things can resolve it:
@@ -44,5 +44,5 @@ A `RequestToAccept` block, and a bill blocked waiting for acceptance.
 
 ## Next
 
-- [Accept](accept.md) — what the drawee does with the request.
-- [Recourse](recourse.md) — the path if acceptance is refused or the deadline passes.
+- [Accept](accept.md): what the drawee does with the request.
+- [Recourse](recourse.md): the path if acceptance is refused or the deadline passes.

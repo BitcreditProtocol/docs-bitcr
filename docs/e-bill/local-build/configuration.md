@@ -48,13 +48,13 @@ structurally distinguishable from mainnet ones. Changing the network does not mi
 gives you a different world.
 
 **`esplora_base_urls` is how payment is detected.** Paying a bill
-[writes no block](../operations/pay.md) — the system watches the chain instead, through Esplora. If
+[writes no block](../operations/pay.md); the system watches the chain instead, through Esplora. If
 these URLs are wrong or unreachable, payments will not be noticed, and bills will drift toward their
 deadlines as though nobody had paid.
 
 **`nostr_relays` determines what you can see and be seen by.** Encrypted chains live on the relays;
 an instance pointed at relays where its counterparties do not publish will simply find nothing. More
-than one relay is a redundancy measure — see [Transport](../transport/).
+than one relay is a redundancy measure. See [Transport](../transport/).
 
 **`surreal_db_connection`** is `indxdb://default` in the browser, which means IndexedDB. See
 [Startup parameters](startup-parameters.md) for how to reset it.

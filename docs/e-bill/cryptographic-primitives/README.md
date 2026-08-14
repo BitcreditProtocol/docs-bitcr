@@ -5,11 +5,11 @@ One key scheme covers the whole protocol.
 ## Secp256k1
 
 Identities, companies and bills all use [Secp256k1](https://docs.rs/secp256k1/latest/secp256k1/)
-key pairs — the same curve Bitcoin uses. That is not a coincidence of taste: it means a bill's
+key pairs, the same curve Bitcoin uses. That is not a coincidence of taste: it means a bill's
 key material and the Bitcoin addresses that settle it come from one scheme, and an identity's
 Nostr npub is derivable from the key it already has.
 
-Each identity holds one key pair, derived from a 12-word BIP39 seed phrase — see
+Each identity holds one key pair, derived from a 12-word BIP39 seed phrase. See
 [Identity restore and transfer](../identity-record/identity-restore-transfer.md). Its public key,
 prefixed and network-tagged, *is* its [node id](../identity-record/). Each bill gets its own
 separate key pair, whose public key is hashed into the
@@ -17,8 +17,8 @@ separate key pair, whose public key is hashed into the
 
 ## Encryption
 
-Data is encrypted with [ECIES](https://docs.rs/ecies/latest/ecies/) — the Elliptic Curve
-Integrated Encryption Scheme — against the recipient's Secp256k1 public key. Anyone with the
+Data is encrypted with [ECIES](https://docs.rs/ecies/latest/ecies/), the Elliptic Curve
+Integrated Encryption Scheme, against the recipient's Secp256k1 public key. Anyone with the
 public key can encrypt to a party; only that party can read it.
 
 This is what lets a bill be handed to a mint or a court that has no write access: the payload is
@@ -41,5 +41,5 @@ attached file.
 ## What is not used any more
 
 Earlier designs used **ed25519** keys for the DHT and **RSA-2048** for encryption. Both are gone.
-If you find either mentioned as current anywhere, it is out of date — see
+If you find either mentioned as current anywhere, it is out of date. See
 [Migration from the DHT](../transport/migration-from-dht.md).

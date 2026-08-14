@@ -1,18 +1,18 @@
 # FAQ
 
-Technical questions about how bills behave. For questions about the business — what it costs, who
-runs mints, why bills at all — see the [bit.cr FAQ](https://bit.cr/faq).
+Technical questions about how bills behave. For questions about the business, such as what it costs,
+who runs mints and why bills at all, see the [bit.cr FAQ](https://bit.cr/faq).
 
 ## Why can't I do anything with this bill?
 
 Almost always one of four states. In order of how often they catch people out:
 
-1. **blocked** — something has been requested and has not resolved. Look for an open request to pay,
+1. **blocked**: something has been requested and has not resolved. Look for an open request to pay,
    offer to sell, or request to recourse. Only the actions that resolve it are available.
-2. **only recoursable** — acceptance or payment was refused, or its deadline lapsed. The bill cannot
+2. **only recoursable**: acceptance or payment was refused, or its deadline lapsed. The bill cannot
    be endorsed, sold or minted any more; only the recourse actions remain.
-3. **paid** — terminal, for everyone.
-4. **recoursed to the end** — terminal, for everyone. Court only.
+3. **paid**: terminal, for everyone.
+4. **recoursed to the end**: terminal, for everyone. Court only.
 
 See [General conditions](concepts/general-conditions.md).
 
@@ -45,7 +45,7 @@ Requesting payment early cannot push a bill into recourse ahead of time. See
 Because you may only claim against holders who held it **before your own first time holding it**.
 
 If you held a bill, endorsed it on, and later received it again, coming back round does not enlarge
-your options — they were fixed by your first turn. The drawee is also always excluded, and so is the
+your options; they were fixed by your first turn. The drawee is also always excluded, and so is the
 drawer when drawer and drawee are the same party.
 
 The [derivation and four worked examples](operations/recourse.md#who-can-be-recoursed-against) spell
@@ -61,7 +61,7 @@ A great deal.
 
 Two of those release the bill; the third changes its fate.
 
-## A recoursee ignored my request versus refused it — same thing?
+## A recoursee ignored my request versus refused it: same thing?
 
 No, and the asymmetry is deliberate.
 
@@ -73,7 +73,7 @@ only in court.
 
 ## Can the same person be both holder and payer?
 
-Yes — for example when a bill is endorsed back to the drawee. The protocol does not special-case it;
+Yes, for example when a bill is endorsed back to the drawee. The protocol does not special-case it;
 it adds the two roles' permissions together. Such a party can request acceptance and then accept the
 same bill.
 
@@ -84,7 +84,7 @@ design, not a caching artefact. See [Bill states](concepts/bill-states.md).
 
 ## Can a relay read my bills?
 
-No. Chain blocks travel as **public** Nostr events with encrypted content — privacy comes from
+No. Chain blocks travel as **public** Nostr events with encrypted content. Privacy comes from
 encryption, not from access control. A relay serves ciphertext it cannot open, and a client without
 the chain key skips the event.
 
@@ -94,7 +94,7 @@ That is why relays are replaceable rather than trusted, and why you can publish 
 ## How does a mint or a court read a bill without being able to change it?
 
 They get the encrypted blocks *and* a plaintext rendering, encrypted to their own public key, with no
-bill keys. Every block commits to a hash of its own plaintext, so the two must agree — a sharer cannot
+bill keys. Every block commits to a hash of its own plaintext, so the two must agree: a sharer cannot
 supply a flattering plaintext next to genuine ciphertext.
 
 See [Sharing bills](transport/sharing-bills.md).

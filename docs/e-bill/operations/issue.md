@@ -4,7 +4,7 @@ Issuing creates the bill and its first block. Every other action is a continuati
 
 ## Who may perform it
 
-Only the **issuer** — the drawer of the bill. There is no prior state to satisfy, since this is
+Only the **issuer**, the drawer of the bill. There is no prior state to satisfy, since this is
 the first action there is.
 
 ## Conditions
@@ -18,7 +18,7 @@ The first two are not enforced by a check that could be skipped: drawer and draw
 [Field description](../content-of-bill/field-description.md).
 
 The third exists because a bill instructing someone to pay themselves is not an obligation. Note
-the wording — *at the time of issue*. Nothing stops a bill later being endorsed back to the payer;
+the wording: *at the time of issue*. Nothing stops a bill later being endorsed back to the payer;
 that is an ordinary situation the protocol handles by granting them both holder and payer actions.
 
 ## The three types
@@ -36,7 +36,7 @@ promises to pay the payee themselves.
 
 **`SelfDrafted`** names the drawer as their own payee, so the drawee pays the drawer directly. Two
 parties, one instrument. Because drawer and drawee are the same party in the recourse calculation's
-terms, a self-drafted bill leaves the drawer unavailable as a recourse target — see
+terms, a self-drafted bill leaves the drawer unavailable as a recourse target. See
 [Recourse](recourse.md).
 
 **`ThreeParties`** is the classic draft: the drawer orders the drawee to pay a third party. Three
@@ -59,10 +59,10 @@ An `Issue` block, and a bill in its opening state:
 - neither accepted nor requested to accept, neither paid nor requested to pay
 - the holder may request acceptance, request payment, endorse, or offer to sell
 - the payer may accept, or reject acceptance
-- the holder may **not** mint yet — minting requires an accepted bill
+- the holder may **not** mint yet, because minting requires an accepted bill
 
 ## Next
 
-- [Request to accept](request-to-accept.md) — get the drawee's signature on the obligation.
-- [Endorse](endorse.md) — pass it on as payment.
-- [Offer to sell](sale.md) — sell it for money now.
+- [Request to accept](request-to-accept.md): get the drawee's signature on the obligation.
+- [Endorse](endorse.md): pass it on as payment.
+- [Offer to sell](sale.md): sell it for money now.

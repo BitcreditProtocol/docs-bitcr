@@ -20,7 +20,7 @@ The seller names a buyer, a price, and a deadline. The floor here is lower than 
 **UTC end of the same day**. A sale is a live negotiation, not a 48-hour obligation imposed on a
 counterparty who never asked for it.
 
-While the offer stands the bill is **blocked** — waiting for a sale — until payment, rejection or
+While the offer stands the bill is **blocked**, waiting for a sale, until payment, rejection or
 expiry.
 
 ### Result
@@ -34,7 +34,7 @@ Completing the sale.
 
 ### Who may perform it
 
-The **holder** — still the seller at this point.
+The **holder**, still the seller at this point.
 
 ### Conditions
 
@@ -45,8 +45,8 @@ The **holder** — still the seller at this point.
 
 ### What triggers it
 
-The buyer paying, within the deadline. Payment is detected on-chain rather than asserted — see
-[Pay](pay.md) — and once detected, the `Sell` action becomes available to the seller.
+The buyer paying, within the deadline. Payment is detected on-chain rather than asserted (see
+[Pay](pay.md)), and once detected the `Sell` action becomes available to the seller.
 
 ### Result
 
@@ -58,7 +58,7 @@ if the bill is dishonoured, and retaining a `Check Payment` view of the settleme
 
 ### Who may perform it
 
-The **buyer** — specifically, the buyer named in the last unexpired `OfferToSell`, if that is the
+The **buyer**: specifically, the one named in the last unexpired `OfferToSell`, if that is the
 last block.
 
 ### Conditions
@@ -77,7 +77,7 @@ unchanged and free to offer it to someone else.
 
 ## If the deadline expires
 
-The offer is invalidated and the bill is unblocked — the same outcome as a rejection, reached by
+The offer is invalidated and the bill is unblocked, the same outcome as a rejection, reached by
 silence rather than refusal.
 
 This is the mild kind of expiry. Compare [request to accept](request-to-accept.md) and
@@ -88,10 +88,10 @@ life.
 ## Sale states are a list
 
 A bill can be offered for sale many times over its life. Sale states are therefore kept as a list,
-latest first, and each is visible to the seller and buyer of that particular sale — not to
+latest first, and each is visible to the seller and buyer of that particular sale, not to
 participants who had no part in it. See [Bill states](../concepts/bill-states.md).
 
 ## Next
 
-- [Endorse](endorse.md) — transferring a bill without a sale.
-- [Mint](mint.md) — selling to a mint rather than to another business.
+- [Endorse](endorse.md): transferring a bill without a sale.
+- [Mint](mint.md): selling to a mint rather than to another business.
