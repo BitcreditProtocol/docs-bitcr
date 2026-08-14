@@ -11,17 +11,17 @@
     "docs:update-package": "npx vp-update"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "^2.0.0-rc.18",
-    "@vuepress/plugin-search": "2.0.0-rc.55",
-    "@vuepress/theme-default": "2.0.0-rc.60",
+    "@vuepress/bundler-vite": "^2.0.0-rc.30",
+    "@vuepress/plugin-search": "2.0.0-rc.131",
+    "@vuepress/theme-default": "2.0.0-rc.132",
     "sass": "^1.81.0",
     "sass-embedded": "^1.81.0",
     "vue": "^3.5.13",
-    "vuepress": "^2.0.0-rc.18"
+    "vuepress": "^2.0.0-rc.30"
   },
   "dependencies": {
     "20": "^3.1.9",
     "@vueuse/core": "^11.2.0",
-    "pnpm": "^9.14.2"
+    "pnpm": "^10.34.4"
   }
 }
