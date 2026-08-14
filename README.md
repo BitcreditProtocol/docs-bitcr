@@ -1,152 +1,90 @@
 # docs.bitcr.org
-Bitcredit documentation
 
-## E-Bill
-* cryptographic primitives
-    * ed25519 for the logic in the DHT
-    * RSA (2048) for encryption
-    * secp256k1 for signatures, as well as generating Bitcoin addresses for nodes and bills
-* identity record
-    * field description
-    * key pairs and their generation
-    * node id
-    * DHT identity creation event and its promotion
-    * identity restore/transfer
-    * upload (backup) user material from system
-* adding another node to the contact book and exchanging data
-* content of bill
-    * field description
-    * uploading of attached files
-    * bill key pairs
-    * topic creation in the DHT
-    * bill example
-    * bill blockchain and its consensus
-    * download PDF version of bill
-* roles in the bill
-    * Drawer
-    * Drawee
-    * Payee
-    * Payer
-    * Holder
-    * Endorser
-    * Endorsee
-    * Seller
-    * Byuer
-    * Guarantor 
-* local build
-    * configuration and startup parameters
-    * software installation
-* user documentation
-    * current user interface with screenshots
-    * settings in the Bill application
-    * map of the journey
-* description of each operation with screenshots and a separate deep dive section
-    * issue
-        * 2 party bill
-        * 3 party bill
-        * field description
-        * communication channels (intro)
-    * accept
-        * difference of 2 and 3 party bill
-        * who can perform this action and when
-        * field description
-    * request to accept
-        * difference of 2 and 3 party bill
-        * who can perform this action and when
-        * field description
-    * sale
-        * how the address for money transfer is generated
-        * validity period of the offer for sale
-        * who can perform this action and when
-        * field description
-    * buy
-        * validity period of the offer for sale
-        * who can perform this action and when
-        * field description
-    * request to pay
-        * who can perform this action and when
-        * field description
-    * pay
-        * how the address for money transfer is generated
-        * who can perform this action and when
-        * field description
-    * receiving payment
-        * who can perform this action and when
-        * field description
-    * recourse
-        * who can perform this action and when
-        * field description
-        * rules of action (to whom the action can be directed)
-    * endorse
-        * who can perform this action and when
-        * field description
-* storage layer
-    * data storage method description
-        * local
-        * on relay
-    * DHT
-        * links to libp2p library
-        * how we use the DHT
-        * how a node joins the DHT
-        * how a node puts and receives events and parse data
-        * topics
-    * Nostr
-        * why we migrated to Nostr
-        * how we use Nostr
-        * who acts as a relay
-        * what data the relay stores and how
-        * event description
-* transport layer
-    * DHT
-        * who acts as a relay
-        * DCUtR
-        * topics
-    * Nostr
-        * why we migrated to Nostr
-        * who acts as a relay
-* technical consensus of the protocol
-* terms of use
-* FAQ
-* glossary
+Bitcredit documentation. A [VuePress](https://vuejs.press/) site published to
+<https://docs.bitcr.org> from the `gh-pages` branch.
 
-## Wildcat mint
-* cryptographic primitives
-    * Cashu (links to documents)
-    * Secp256k1
-* request for minting a bill of exchange from a user to Wildcat
-    * bill of exchange delivery
-    * delivery of bill of exchange keys
-* quote
-    * credit check of bill of exchange by Wildcat
-    * discount interest
-    * generation of a new keyset (from a combination of bill of exchange key and Wildcat key)
-    * generation of quota id from bill of exchange id
-    * quote validity period
-    * sending a quote to the user
-* user quote check
-    * quote rejection
-    * quote confirmation
-* generation of credit tokens
-    * explanation of the credit token
-    * token prefix
-    * Wildcat fee
-    * credit token delivery to the user
-* conversion of a credit token into a debit token
-    * redemption
-    * discounting
-* communication channels
-    * Wildcat API
-        * for bills
-        * for quotes
-        * for credit tokens
-    * sending credit tokens between users
-        * transmission methods
-            * QR
-            * NFC
-            * String
-        * how the sender sends the tokens
-        * how the recipient redeems the tokens
-* terms of use
-* FAQ
-    * Cashu modifications
-* glossary
+It documents two things:
+
+- **E-Bill** — the electronic bill of exchange: its identifiers, its content, and every
+  operation a participant can perform on it.
+- **Wildcat Mint** — what a Wildcat is and what it does with a bill, at an overview level.
+
+## Where the content comes from
+
+This site does not invent protocol facts. Every technical claim traces to one of these, and
+a page that cannot cite one of them does not get written:
+
+| Source | Covers |
+| --- | --- |
+| [`cats/Bitcredit-Core/ids_and_keys.md`](https://github.com/BitcreditProtocol/cats/blob/main/Bitcredit-Core/ids_and_keys.md) | NodeId and BillId formats, network prefixes, key and encryption schemes |
+| [`cats/Bitcredit-Core/bill_actions.md`](https://github.com/BitcreditProtocol/cats/blob/main/Bitcredit-Core/bill_actions.md) | bill types, every action, recoursee derivation |
+| [`cats/Bitcredit-Core/bill_validation.md`](https://github.com/BitcreditProtocol/cats/blob/main/Bitcredit-Core/bill_validation.md) | validation pipeline, per-action preconditions |
+| [`cats/Bitcredit-Core/bill_sharing.md`](https://github.com/BitcreditProtocol/cats/blob/main/Bitcredit-Core/bill_sharing.md) | sharing a bill with a mint or a court |
+| [`Bitcredit-Core/docs/concepts.md`](https://github.com/BitcreditProtocol/Bitcredit-Core/blob/main/docs/concepts.md) | roles, bill states, payment actions |
+| [`Bitcredit-Core/docs/`](https://github.com/BitcreditProtocol/Bitcredit-Core/tree/main/docs) | prerequisites, configuration, WASM, versioning |
+| [bit.cr](https://bit.cr) and [bitcr.org](https://bitcr.org) | Wildcat overview, glossary, FAQ |
+
+[CATS](https://github.com/BitcreditProtocol/cats) — the Credit Assurance Token Standard — is
+the specification. When this site and CATS disagree, CATS is right and this site is a bug.
+
+## House rules
+
+1. **Cite the spec, don't paraphrase from memory.** If a deadline is "minimum UTC end-of-day
+   plus 48 hours", it is because `bill_validation.md` says so.
+2. **Do not document architecture the protocol has left behind.** The DHT/libp2p transport,
+   RSA encryption and ed25519 keys were all replaced. They are described in exactly one place,
+   [Migration from the DHT](docs/e-bill/transport/migration-from-dht.md), in the past tense.
+   Everywhere else the answer is Nostr and Secp256k1.
+3. **One page per idea.** Preconditions shared by every operation live in
+   `operations/README.md` and are linked, not restated ten times.
+4. **A page with only a heading is worse than no page.** It costs a reader a click to learn
+   nothing. Leave it out of the sidebar and record the gap below instead.
+
+## Running locally
+
+Requires Node 20 or newer and pnpm 9.
+
+```bash
+pnpm install
+pnpm docs:dev
+```
+
+The dev server reloads on save. Editing `docs/.vuepress/styles/index.scss` needs a rebuild:
+
+```bash
+pnpm docs:build && pnpm docs:dev
+```
+
+## Deploying
+
+Pushing to `master` runs [`.github/workflows/docs.yml`](.github/workflows/docs.yml), which
+builds the site and publishes `docs/.vuepress/dist` to `gh-pages`. GitHub Pages serves that
+branch at `docs.bitcr.org` (CNAME in `docs/.vuepress/public/CNAME`, HTTPS enforced).
+
+Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
+which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
+pages or sidebar entries that point at nothing. It does not deploy. Since the deploy workflow
+only fires on `master`, this is the only thing standing between a broken dependency bump and
+the live site.
+
+Navigation is not automatic: a new page has to be added to the `sidebar` in
+[`docs/.vuepress/config.js`](docs/.vuepress/config.js), or it is only reachable by URL.
+
+## Known gaps
+
+Deliberately not written yet, rather than written badly:
+
+- **User documentation.** Screenshots, settings reference and journey map cannot be derived
+  from the specifications; they need the current app in front of you.
+  `docs/e-bill/user-documentation/` points at the bit.cr guides in the meantime.
+- **Wildcat Mint depth.** Only the overview is public. The quote state machine, service
+  topology, keyset derivation and API surface are specified in the internal `internal_cats`
+  repository and are not published here.
+- **Identity field list.** `docs/e-bill/identity-record/field-description.md` predates the
+  current wallet. Check it against the app before treating it as current.
+- **Terms of use.** The 2024 outline listed a terms-of-use page for each section. Neither
+  exists: they need legal review, not technical writing.
+
+## Licence
+
+[MIT](LICENSE).

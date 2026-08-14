@@ -1,1 +1,0 @@
-# Validity Period

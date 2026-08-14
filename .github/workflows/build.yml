@@ -1,0 +1,62 @@
+name: build
+
+# The deploy workflow only runs on pushes to master, so until this existed nothing
+# checked a pull request. A dependency bump could sit in review looking green while
+# leaving unmet peers, or breaking the build outright, and nobody would know until it
+# was already on docs.bitcr.org.
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      # --frozen-lockfile fails if package.json and the lockfile disagree.
+      # --strict-peer-dependencies fails on unmet peers, which is what catches a
+      # partial upgrade: bumping a theme without bumping what the theme now requires.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+
+      - name: Build site
+        run: pnpm docs:build
+
+      # A page holding nothing but a heading costs a reader a click to learn nothing.
+      # The site was 139 such files before it was written; this keeps them from coming back.
+      - name: Check for stub pages
+        run: |
+          stubs=$(find docs -name '*.md' -not -path '*/.vuepress/*' -size -100c)
+          if [ -n "$stubs" ]; then
+            echo "::error::Stub pages found (under 100 bytes — heading only):"
+            echo "$stubs"
+            exit 1
+          fi
+          echo "No stub pages."
+
+      # Navigation is not automatic. A sidebar entry pointing at a file that does not
+      # exist is a dead link in the nav of a live site.
+      - name: Check sidebar entries resolve
+        run: |
+          missing=$(comm -13 \
+            <(find docs -name '*.md' -not -path '*/.vuepress/*' | sed 's|^docs||' | sort -u) \
+            <(grep -oE "'/[a-zA-Z0-9./-]+\.md'" docs/.vuepress/config.js | tr -d "'" | sort -u))
+          if [ -n "$missing" ]; then
+            echo "::error::Sidebar entries with no matching file:"
+            echo "$missing"
+            exit 1
+          fi
+          echo "Every sidebar entry resolves."
