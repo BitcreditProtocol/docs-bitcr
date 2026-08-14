@@ -61,6 +61,12 @@ Pushing to `master` runs [`.github/workflows/docs.yml`](.github/workflows/docs.y
 builds the site and publishes `docs/.vuepress/dist` to `gh-pages`. GitHub Pages serves that
 branch at `docs.bitcr.org` (CNAME in `docs/.vuepress/public/CNAME`, HTTPS enforced).
 
+Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
+which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
+pages or sidebar entries that point at nothing. It does not deploy. Since the deploy workflow
+only fires on `master`, this is the only thing standing between a broken dependency bump and
+the live site.
+
 Navigation is not automatic: a new page has to be added to the `sidebar` in
 [`docs/.vuepress/config.js`](docs/.vuepress/config.js), or it is only reachable by URL.
 
