@@ -9,6 +9,7 @@ on:
 
 jobs:
   docs:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     # ghaction-github-pages pushes the built site to the gh-pages branch
