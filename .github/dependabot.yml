@@ -23,11 +23,9 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     groups:
-      npm-patch:
+      npm:
         update-types:
           - "patch"
-      npm-minor:
-        update-types:
           - "minor"
     schedule:
       interval: "weekly"
