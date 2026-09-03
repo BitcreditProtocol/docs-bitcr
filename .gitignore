@@ -7,6 +7,8 @@ yarn-error.log*
 
 # Dependency directories
 node_modules/
+# pnpm owns the lockfile; a stray npm install must not add a second one
+package-lock.json
 
 # Output directories
 /docs/.vuepress/dist/
