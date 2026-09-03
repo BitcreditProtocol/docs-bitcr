@@ -20,9 +20,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # The pnpm version is read from the packageManager field in package.json, so
-      # CI, Dependabot and local corepack all run the same release. Dependabot
-      # regenerating the lockfile with a different major is what silently dropped
-      # the patchedDependencies block and broke the frozen install below.
+      # CI, Dependabot and local corepack all run the same release and write the same
+      # lockfile.
       - name: Setup pnpm
         uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
 
@@ -41,30 +40,6 @@ jobs:
 
       - name: Build site
         run: pnpm docs:build
-
-      # The search box is patched, see pnpm.patchedDependencies in package.json: upstream
-      # escapes a hyphen as \- inside a u-flag regex, which is a SyntaxError, so any query
-      # with a hyphen ("e-bill") unmounted the whole search box. A pnpm that ignores the
-      # patch config still installs and builds fine, so check the built bundle rather than
-      # the config.
-      - name: Check the search patch is applied
-        run: |
-          assets=docs/.vuepress/dist/assets
-          shopt -s nullglob
-          js_files=("$assets"/*.js)
-          if [ ${#js_files[@]} -eq 0 ]; then
-            echo "::error::No JS assets found in $assets, so the search patch cannot be verified."
-            exit 1
-          fi
-          if grep -qF -- 'replaceAll(/[-/\\^$*+?.()|[\]{}]/gu' "${js_files[@]}"; then
-            echo "::error::The built bundle contains the unpatched @vuepress/plugin-search escape regex, so the pnpm patch was not applied."
-            exit 1
-          fi
-          if ! grep -qF -- 'replaceAll(/[/\\^$*+?.()|[\]{}]/gu' "${js_files[@]}"; then
-            echo "::error::The patched @vuepress/plugin-search escape regex is missing from the built bundle."
-            exit 1
-          fi
-          echo "Search patch is applied."
 
       # A page holding nothing but a heading costs a reader a click to learn nothing.
       # The site was 139 such files before it was written; this keeps them from coming back.

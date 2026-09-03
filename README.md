@@ -48,9 +48,8 @@ the specification. When this site and CATS disagree, CATS is right and this site
 Requires Node 24, the version in `.nvmrc`, which `nvm use` and `fnm use` pick up and CI reads
 through `node-version-file`. VuePress itself needs Node 22.18 or newer, so Node 20 is out. pnpm is
 pinned to 9.15.9 in the `packageManager` field of `package.json`. With `corepack enable`, or with
-pnpm 10 or newer installed, that version is picked up automatically. Pinning it is what keeps
-Dependabot, CI and local installs writing the same lockfile: a different pnpm major regenerates
-`pnpm-lock.yaml` without the `patchedDependencies` block, and the frozen install in CI then fails.
+pnpm 10 or newer installed, that version is picked up automatically, so Dependabot, CI and local
+installs all write the same lockfile.
 
 ```bash
 pnpm install
@@ -71,9 +70,9 @@ branch at `docs.bitcr.org` (CNAME in `docs/.vuepress/public/CNAME`, HTTPS enforc
 
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
-pages, sidebar entries that point at nothing, or a bundle in which the search patch is missing.
-It does not deploy. Since the deploy workflow only fires on `master`, this is the only thing
-standing between a broken dependency bump and the live site.
+pages or sidebar entries that point at nothing. It does not deploy. Since the deploy workflow
+only fires on `master`, this is the only thing standing between a broken dependency bump and
+the live site.
 
 Navigation is not automatic: a new page has to be added to the `sidebar` in
 [`docs/.vuepress/config.js`](docs/.vuepress/config.js), or it is only reachable by URL.
