@@ -50,11 +50,17 @@ jobs:
       - name: Check the search patch is applied
         run: |
           assets=docs/.vuepress/dist/assets
-          if grep -qF -- 'replaceAll(/[-/\\^$*+?.()|[\]{}]/gu' "$assets"/*.js; then
+          shopt -s nullglob
+          js_files=("$assets"/*.js)
+          if [ ${#js_files[@]} -eq 0 ]; then
+            echo "::error::No JS assets found in $assets, so the search patch cannot be verified."
+            exit 1
+          fi
+          if grep -qF -- 'replaceAll(/[-/\\^$*+?.()|[\]{}]/gu' "${js_files[@]}"; then
             echo "::error::The built bundle contains the unpatched @vuepress/plugin-search escape regex, so the pnpm patch was not applied."
             exit 1
           fi
-          if ! grep -qF -- 'replaceAll(/[/\\^$*+?.()|[\]{}]/gu' "$assets"/*.js; then
+          if ! grep -qF -- 'replaceAll(/[/\\^$*+?.()|[\]{}]/gu' "${js_files[@]}"; then
             echo "::error::The patched @vuepress/plugin-search escape regex is missing from the built bundle."
             exit 1
           fi
