@@ -5,7 +5,10 @@
 // not here:
 //   build command      pnpm docs:build
 //   deploy command     npx wrangler deploy
-//   preview command    npx wrangler versions upload   (not "wrangler preview": private beta)
+//   preview command    npx wrangler versions upload
+// "Builds for Preview branches" (Worker Previews beta) must stay off: with it on, a push fails at
+// "Preview creation" because the account has no beta access, while a re-run from GitHub uses the
+// classic trigger and succeeds.
 // Node comes from .nvmrc, pnpm from packageManager in package.json; set a PNPM_VERSION build
 // variable only if a build log shows a different pnpm than the pinned one.
 // Local preview of a build: npx wrangler dev

@@ -77,9 +77,11 @@ name turned into hyphens, and reports as the "Workers Builds: docs-bitcr" check 
 request. The Worker is configured in [`wrangler.jsonc`](wrangler.jsonc); the build and preview
 commands live in the Cloudflare dashboard. The build image takes Node from `.nvmrc` and pnpm from
 `packageManager`. Until DNS moves, `docs.bitcr.org` is still served by GitHub Pages as above.
-Two things stop builds without a visible error: the Cloudflare GitHub App must list this
-repository, and the preview command must be `versions upload`, not `wrangler preview`, which is
-a private beta. `npx wrangler dev` serves a local build.
+Two things stop builds without a useful error. The Cloudflare GitHub App must list this
+repository, or pushes are ignored. And while the Worker Previews beta ("Builds for Preview
+branches" in the dashboard) is enabled, a push fails at "Preview creation" in zero seconds because
+the account has no access to that beta; re-running the failed check from GitHub goes through the
+classic trigger with `versions upload` and succeeds. `npx wrangler dev` serves a local build.
 
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
