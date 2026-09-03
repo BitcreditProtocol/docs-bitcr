@@ -68,8 +68,17 @@ Pushing to `master` runs [`.github/workflows/docs.yml`](.github/workflows/docs.y
 builds the site and publishes `docs/.vuepress/dist` to `gh-pages`. GitHub Pages serves that
 branch at `docs.bitcr.org` (CNAME in `docs/.vuepress/public/CNAME`, HTTPS enforced).
 
-A [`wrangler.jsonc`](wrangler.jsonc) is in place for the planned move to Cloudflare Workers static
-assets; no workflow uses it yet. `npx wrangler dev` serves a local build from it.
+The site is moving to Cloudflare Workers. The repository is connected to Workers Builds, which
+builds every push with `pnpm docs:build`; for `master` it then runs `npx wrangler deploy` to the
+`docs-bitcr` Worker, for any other branch `npx wrangler versions upload`. That upload gives the
+branch a preview at `https://<branch>-docs-bitcr.bitcredit.workers.dev`, slashes in the branch
+name turned into hyphens, and reports as the "Workers Builds: docs-bitcr" check on the pull
+request. The Worker is configured in [`wrangler.jsonc`](wrangler.jsonc); the build and preview
+commands live in the Cloudflare dashboard. The build image takes Node from `.nvmrc` and pnpm from
+`packageManager`. Until DNS moves, `docs.bitcr.org` is still served by GitHub Pages as above.
+Two things stop builds without a visible error: the Cloudflare GitHub App must list this
+repository, and the preview command must be `versions upload`, not `wrangler preview`, which is
+a private beta. `npx wrangler dev` serves a local build.
 
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub

@@ -1,14 +1,13 @@
-// Cloudflare Worker that serves the built site as static assets. Not in use yet: docs.yml
-// still deploys to GitHub Pages. Workers Builds settings for the switch, which live in the
-// dashboard rather than in this repo:
-//   build command                          pnpm docs:build
-//   deploy command                         npx wrangler deploy
-//   preview command                        npx wrangler versions upload   (preview URL per PR;
-//                                          the dashboard default "npx wrangler preview" is a
-//                                          private beta this account does not have)
-//   build variable                         PNPM_VERSION, equal to packageManager in package.json
-//                                          (the build image reads .nvmrc for Node but not
-//                                          packageManager for pnpm)
+// Cloudflare Worker that serves the built site as static assets. Workers Builds is connected to
+// the repo: master runs the deploy command, every other branch the preview command, which gives
+// the branch a URL at <branch>-docs-bitcr.bitcredit.workers.dev. docs.bitcr.org still points at
+// GitHub Pages (docs.yml) until DNS moves. The build settings live in the Cloudflare dashboard,
+// not here:
+//   build command      pnpm docs:build
+//   deploy command     npx wrangler deploy
+//   preview command    npx wrangler versions upload   (not "wrangler preview": private beta)
+// Node comes from .nvmrc, pnpm from packageManager in package.json; set a PNPM_VERSION build
+// variable only if a build log shows a different pnpm than the pinned one.
 // Local preview of a build: npx wrangler dev
 {
   "name": "docs-bitcr",
