@@ -51,16 +51,17 @@ pinned to 11.25.0 in the `packageManager` field of `package.json`. With `corepac
 pnpm 10 or newer installed, that version is picked up automatically, so Dependabot, CI and local
 installs all write the same lockfile.
 
-```bash
-pnpm install
-pnpm docs:dev
-```
+| Command | Does |
+|---|---|
+| `pnpm install` | Install dependencies exactly as locked |
+| `pnpm docs:dev` | Dev server, reloads on save |
+| `pnpm docs:clean-dev` | Dev server after clearing the VuePress cache |
+| `pnpm docs:build` | Build the site into `docs/.vuepress/dist` |
+| `pnpm docs:update-package` | Bump the VuePress packages to their latest release |
+| `npx wrangler dev` | Serve a build the way the Cloudflare Worker will, on `localhost:8787` |
 
-The dev server reloads on save. Editing `docs/.vuepress/styles/index.scss` needs a rebuild:
-
-```bash
-pnpm docs:build && pnpm docs:dev
-```
+Editing `docs/.vuepress/styles/index.scss` does not hot-reload: run `pnpm docs:build`, then start
+the dev server again.
 
 ## Deploying
 
