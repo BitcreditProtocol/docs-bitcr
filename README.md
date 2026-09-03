@@ -45,11 +45,12 @@ the specification. When this site and CATS disagree, CATS is right and this site
 
 ## Running locally
 
-Requires Node 20 or newer and pnpm 9.15.9, the version pinned in the `packageManager` field of
-`package.json`. With `corepack enable`, or with pnpm 10 or newer installed, that version is picked
-up automatically. Pinning it is what keeps Dependabot, CI and local installs writing the same
-lockfile: a different pnpm major regenerates `pnpm-lock.yaml` without the `patchedDependencies`
-block, and the frozen install in CI then fails.
+Requires Node 24, the version in `.nvmrc`, which `nvm use` and `fnm use` pick up and CI reads
+through `node-version-file`. VuePress itself needs Node 22.18 or newer, so Node 20 is out. pnpm is
+pinned to 9.15.9 in the `packageManager` field of `package.json`. With `corepack enable`, or with
+pnpm 10 or newer installed, that version is picked up automatically. Pinning it is what keeps
+Dependabot, CI and local installs writing the same lockfile: a different pnpm major regenerates
+`pnpm-lock.yaml` without the `patchedDependencies` block, and the frozen install in CI then fails.
 
 ```bash
 pnpm install
