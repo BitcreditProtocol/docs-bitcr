@@ -1,0 +1,26 @@
+// Cloudflare Worker that serves the built site as static assets. Not in use yet: docs.yml
+// still deploys to GitHub Pages. Workers Builds settings for the switch, which live in the
+// dashboard rather than in this repo:
+//   build command                          pnpm docs:build
+//   deploy command                         npx wrangler deploy
+//   non-production branch deploy command   npx wrangler versions upload   (preview URL per PR)
+//   build variable                         PNPM_VERSION, equal to packageManager in package.json
+//                                          (the build image reads .nvmrc for Node but not
+//                                          packageManager for pnpm)
+// Local preview of a build: npx wrangler dev
+{
+  "name": "docs-bitcr",
+  "compatibility_date": "2026-08-31",
+  "assets": {
+    // VuePress output, see docs:build in package.json.
+    "directory": "./docs/.vuepress/dist",
+    // Cloudflare's default. Section indexes such as /e-bill/ serve directly; a page URL such
+    // as /glossary.html answers 307 to /glossary and the page is served there. VuePress's
+    // router maps the extensionless path back to the .html route, so the app hydrates fine.
+    // Serving .html URLs without the redirect would need "none" plus a small Worker script
+    // to resolve folder indexes.
+    "html_handling": "auto-trailing-slash",
+    // VuePress emits 404.html; serve it with a real 404 status for unknown paths.
+    "not_found_handling": "404-page"
+  }
+}

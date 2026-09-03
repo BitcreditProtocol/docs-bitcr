@@ -68,6 +68,9 @@ Pushing to `master` runs [`.github/workflows/docs.yml`](.github/workflows/docs.y
 builds the site and publishes `docs/.vuepress/dist` to `gh-pages`. GitHub Pages serves that
 branch at `docs.bitcr.org` (CNAME in `docs/.vuepress/public/CNAME`, HTTPS enforced).
 
+A [`wrangler.jsonc`](wrangler.jsonc) is in place for the planned move to Cloudflare Workers static
+assets; no workflow uses it yet. `npx wrangler dev` serves a local build from it.
+
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
 pages or sidebar entries that point at nothing. It does not deploy. Since the deploy workflow

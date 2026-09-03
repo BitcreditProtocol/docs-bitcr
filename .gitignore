@@ -16,6 +16,7 @@ package-lock.json
 # Temp files
 /docs/.vuepress/.temp/
 /docs/.vuepress/.cache/
+.wrangler/
 
 # Local environment settings
 .env.local
