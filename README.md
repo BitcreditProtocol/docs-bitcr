@@ -45,24 +45,43 @@ the specification. When this site and CATS disagree, CATS is right and this site
 
 ## Running locally
 
-Requires Node 20 or newer and pnpm 9.
+Requires Node 24, the version in `.nvmrc`, which `nvm use` and `fnm use` pick up and CI reads
+through `node-version-file`. VuePress itself needs Node 22.18 or newer, so Node 20 is out. pnpm is
+pinned to 11.25.0 in the `packageManager` field of `package.json`. With `corepack enable`, or with
+pnpm 10 or newer installed, that version is picked up automatically, so Dependabot, CI and local
+installs all write the same lockfile.
 
-```bash
-pnpm install
-pnpm docs:dev
-```
+| Command | Does |
+|---|---|
+| `pnpm install` | Install dependencies exactly as locked |
+| `pnpm docs:dev` | Dev server, reloads on save |
+| `pnpm docs:clean-dev` | Dev server after clearing the VuePress cache |
+| `pnpm docs:build` | Build the site into `docs/.vuepress/dist` |
+| `pnpm docs:update-package` | Bump the VuePress packages to their latest release |
+| `npx wrangler dev` | Serve a build the way the Cloudflare Worker will, on `localhost:8787` |
 
-The dev server reloads on save. Editing `docs/.vuepress/styles/index.scss` needs a rebuild:
-
-```bash
-pnpm docs:build && pnpm docs:dev
-```
+Editing `docs/.vuepress/styles/index.scss` does not hot-reload: run `pnpm docs:build`, then start
+the dev server again.
 
 ## Deploying
 
 Pushing to `master` runs [`.github/workflows/docs.yml`](.github/workflows/docs.yml), which
 builds the site and publishes `docs/.vuepress/dist` to `gh-pages`. GitHub Pages serves that
 branch at `docs.bitcr.org` (CNAME in `docs/.vuepress/public/CNAME`, HTTPS enforced).
+
+The site is moving to Cloudflare Workers. The repository is connected to Workers Builds, which
+builds every push with `pnpm docs:build`; for `master` it then runs `npx wrangler deploy` to the
+`docs-bitcr` Worker, for any other branch `npx wrangler versions upload`. That upload gives the
+branch a preview at `https://<branch>-docs-bitcr.bitcredit.workers.dev`, slashes in the branch
+name turned into hyphens, and reports as the "Workers Builds: docs-bitcr" check on the pull
+request. The Worker is configured in [`wrangler.jsonc`](wrangler.jsonc); the build and preview
+commands live in the Cloudflare dashboard. The build image takes Node from `.nvmrc` and pnpm from
+`packageManager`. Until DNS moves, `docs.bitcr.org` is still served by GitHub Pages as above.
+Two things stop builds without a useful error. The Cloudflare GitHub App must list this
+repository, or pushes are ignored. And while the Worker Previews beta ("Builds for Preview
+branches" in the dashboard) is enabled, a push fails at "Preview creation" in zero seconds because
+the account has no access to that beta; re-running the failed check from GitHub goes through the
+classic trigger with `versions upload` and succeeds. `npx wrangler dev` serves a local build.
 
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
