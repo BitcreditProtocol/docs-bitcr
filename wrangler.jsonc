@@ -3,7 +3,9 @@
 // dashboard rather than in this repo:
 //   build command                          pnpm docs:build
 //   deploy command                         npx wrangler deploy
-//   non-production branch deploy command   npx wrangler versions upload   (preview URL per PR)
+//   preview command                        npx wrangler versions upload   (preview URL per PR;
+//                                          the dashboard default "npx wrangler preview" is a
+//                                          private beta this account does not have)
 //   build variable                         PNPM_VERSION, equal to packageManager in package.json
 //                                          (the build image reads .nvmrc for Node but not
 //                                          packageManager for pnpm)
@@ -11,6 +13,9 @@
 {
   "name": "docs-bitcr",
   "compatibility_date": "2026-08-31",
+  // Each uploaded version gets a preview URL on workers.dev; this is what makes
+  // "wrangler versions upload" useful as the preview command.
+  "preview_urls": true,
   "assets": {
     // VuePress output, see docs:build in package.json.
     "directory": "./docs/.vuepress/dist",
