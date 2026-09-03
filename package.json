@@ -4,6 +4,7 @@
   "description": "bitcr documentation",
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "docs:build": "vuepress build docs",
     "docs:clean-dev": "vuepress dev docs --clean-cache",

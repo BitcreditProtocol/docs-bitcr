@@ -22,19 +22,19 @@ jobs:
           # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
 
+      # pnpm version comes from the packageManager field in package.json, see build.yml.
       - name: Setup pnpm
         uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
-        with:
-          version: 9
-          run_install: true
 
       - name: Setup Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 20
+          cache: pnpm
 
+      # Same flags as build.yml, so the deploy installs exactly what the PR check verified.
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
 
       # run build script
       - name: Build VuePress site
