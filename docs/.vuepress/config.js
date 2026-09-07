@@ -3,6 +3,42 @@ import { defineUserConfig } from 'vuepress/cli'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { searchPlugin } from '@vuepress/plugin-search'
 
+// @vuepress/plugin-search 2.0.0-rc.131 escapes query text for a RegExp built with the u
+// flag, and escapes a hyphen as \-, which is a SyntaxError under that flag. Any query with
+// a hyphen ("e-bill") threw inside a Vue computed and unmounted the whole search box.
+// Outside a character class a hyphen needs no escaping, so drop it from the escape set.
+//
+// This used to be a pnpm patch. pnpm has to read the patch file to hash it into the
+// lockfile, Dependabot never checks the patches directory out, and pnpm majors disagree on
+// where the patch config lives, so every dependency bump broke the frozen install. A
+// bundler transform has none of those problems. The build fails with a pointer here when
+// the escape set can no longer be found, which is the moment to check whether upstream
+// fixed it and delete this.
+const brokenEscape = String.raw`/[-/\\^$*+?.()|[\]{}]/gu`
+const fixedEscape = String.raw`/[/\\^$*+?.()|[\]{}]/gu`
+
+const fixSearchHyphenEscape = () => {
+  let applied = false
+  return {
+    name: 'bitcr:fix-search-hyphen-escape',
+    enforce: 'pre',
+    transform(code, id) {
+      if (!id.includes('@vuepress/plugin-search') || !code.includes(brokenEscape)) return null
+      applied = true
+      return { code: code.replaceAll(brokenEscape, fixedEscape), map: null }
+    },
+    buildEnd() {
+      // The server build externalises or shares the module; only the client bundle is checked.
+      if (applied || this.environment?.name === 'ssr') return
+      throw new Error(
+        'fixSearchHyphenEscape in docs/.vuepress/config.js found nothing to fix in ' +
+          '@vuepress/plugin-search. If upstream fixed the hyphen escape, delete the plugin; ' +
+          'otherwise a search for a hyphenated term breaks the search box.',
+      )
+    },
+  }
+}
+
 export default defineUserConfig({
   lang: 'en-US',
 
@@ -133,6 +169,7 @@ export default defineUserConfig({
 
   bundler: viteBundler({
     viteOptions: {
+      plugins: [fixSearchHyphenEscape()],
       server: {
         hmr: false, // Disable HMR
       },
