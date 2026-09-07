@@ -1,7 +1,7 @@
 # docs.bitcr.org
 
-Bitcredit documentation. A [VuePress](https://vuejs.press/) site published to
-<https://docs.bitcr.org> from the `gh-pages` branch.
+Bitcredit documentation. A [VuePress](https://vuejs.press/) site served at
+<https://docs.bitcr.org> by a Cloudflare Worker.
 
 It documents two things:
 
@@ -65,18 +65,15 @@ the dev server again.
 
 ## Deploying
 
-Pushing to `master` runs [`.github/workflows/docs.yml`](.github/workflows/docs.yml), which
-builds the site and publishes `docs/.vuepress/dist` to `gh-pages`. GitHub Pages serves that
-branch at `docs.bitcr.org` (CNAME in `docs/.vuepress/public/CNAME`, HTTPS enforced).
-
-The site is moving to Cloudflare Workers. The repository is connected to Workers Builds, which
-builds every push with `pnpm docs:build`; for `master` it then runs `npx wrangler deploy` to the
-`docs-bitcr` Worker, for any other branch `npx wrangler versions upload`. That upload gives the
+`docs.bitcr.org` is served by the `docs-bitcr` Cloudflare Worker as static assets, configured in
+[`wrangler.jsonc`](wrangler.jsonc). The repository is connected to Workers Builds, which builds
+every push with `pnpm docs:build`; for `master` it then runs `npx wrangler deploy`, which is the
+production deploy, for any other branch `npx wrangler versions upload`. That upload gives the
 branch a preview at `https://<branch>-docs-bitcr.bitcredit.workers.dev`, slashes in the branch
 name turned into hyphens, and reports as the "Workers Builds: docs-bitcr" check on the pull
-request. The Worker is configured in [`wrangler.jsonc`](wrangler.jsonc); the build and preview
-commands live in the Cloudflare dashboard. The build image takes Node from `.nvmrc` and pnpm from
-`packageManager`. Until DNS moves, `docs.bitcr.org` is still served by GitHub Pages as above.
+request. The build and preview commands live in the Cloudflare dashboard, as do the custom domain
+and its DNS record; nothing in this repository names the domain. The build image takes Node from
+`.nvmrc` and pnpm from `packageManager`.
 Two things stop builds without a useful error. The Cloudflare GitHub App must list this
 repository, or pushes are ignored. And while the Worker Previews beta ("Builds for Preview
 branches" in the dashboard) is enabled, a push fails at "Preview creation" in zero seconds because
@@ -85,9 +82,9 @@ classic trigger with `versions upload` and succeeds. `npx wrangler dev` serves a
 
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
-pages or sidebar entries that point at nothing. It does not deploy. Since the deploy workflow
-only fires on `master`, this is the only thing standing between a broken dependency bump and
-the live site.
+pages or sidebar entries that point at nothing. It does not deploy. Workers Builds builds the
+same pull request for its preview but runs none of those checks, so this is still what catches a
+dependency bump with unmet peers before it is merged and deployed.
 
 Navigation is not automatic: a new page has to be added to the `sidebar` in
 [`docs/.vuepress/config.js`](docs/.vuepress/config.js), or it is only reachable by URL.
