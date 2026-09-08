@@ -72,8 +72,8 @@ production deploy, for any other branch `npx wrangler versions upload`. That upl
 branch a preview at `https://<branch>-docs-bitcr.bitcredit.workers.dev`, slashes in the branch
 name turned into hyphens, and reports as the "Workers Builds: docs-bitcr" check on the pull
 request. The build and preview commands live in the Cloudflare dashboard, as do the custom domain
-and its DNS record; nothing in this repository names the domain. The build image takes Node from
-`.nvmrc` and pnpm from `packageManager`.
+and its DNS record; domain routing is managed in Cloudflare rather than via repository config. The
+build image takes Node from `.nvmrc` and pnpm from `packageManager`.
 Two things stop builds without a useful error. The Cloudflare GitHub App must list this
 repository, or pushes are ignored. And while the Worker Previews beta ("Builds for Preview
 branches" in the dashboard) is enabled, a push fails at "Preview creation" in zero seconds because
