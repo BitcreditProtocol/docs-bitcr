@@ -1,9 +1,9 @@
 name: build
 
-# The deploy workflow only runs on pushes to master, so until this existed nothing
-# checked a pull request. A dependency bump could sit in review looking green while
-# leaving unmet peers, or breaking the build outright, and nobody would know until it
-# was already on docs.bitcr.org.
+# Workers Builds deploys master and builds every other branch for a preview, but it
+# only runs the build. Without this workflow a dependency bump could sit in review
+# looking green while leaving unmet peers, and nobody would know until it was already
+# on docs.bitcr.org.
 on:
   pull_request:
   workflow_dispatch:
