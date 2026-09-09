@@ -1,8 +1,7 @@
-// Cloudflare Worker that serves the built site as static assets. Workers Builds is connected to
-// the repo: master runs the deploy command, every other branch the preview command, which gives
-// the branch a URL at <branch>-docs-bitcr.bitcredit.workers.dev. docs.bitcr.org still points at
-// GitHub Pages (docs.yml) until DNS moves. The build settings live in the Cloudflare dashboard,
-// not here:
+// Cloudflare Worker that serves the built site as static assets at docs.bitcr.org. Workers Builds
+// is connected to the repo: master runs the deploy command, every other branch the preview
+// command, which gives the branch a URL at <branch>-docs-bitcr.bitcredit.workers.dev. The custom
+// domain and the build settings live in the Cloudflare dashboard, not here:
 //   build command      pnpm docs:build
 //   deploy command     npx wrangler deploy
 //   preview command    npx wrangler versions upload
