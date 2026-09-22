@@ -84,9 +84,12 @@ design, not a caching artefact. See [Bill states](concepts/bill-states.md).
 
 ## Can a relay read my bills?
 
-No. Chain blocks travel as **public** Nostr events with encrypted content. Privacy comes from
-encryption, not from access control. A relay serves ciphertext it cannot open, and a client without
-the chain key skips the event.
+Not their terms. Chain blocks travel as **public** Nostr events, and what is encrypted is the
+block's payload: the amount, the dates, the participants and the rest. Privacy comes from
+encryption, not from access control, so whatever the encryption does not cover is public. A relay
+can see the envelope around that payload: the bill's id, the block's height and timestamp, the
+hash chain, the signing public key, and which operation the block performs. It can open none of the
+payload itself, which is also all a client without the chain key can see.
 
 That is why relays are replaceable rather than trusted, and why you can publish to several. See
 [Transport](transport/).
