@@ -45,9 +45,10 @@ Anyone. Bitcredit publishes its own relay implementation,
 [Postgres storage backend](https://github.com/BitcreditProtocol/nostr-postgres-db), but a
 participant is free to run any Nostr relay, or several.
 
-Because relays hold ciphertext and are chosen per identity, using more than one is a redundancy
-measure rather than a coordination problem. There is no canonical relay whose failure stops the
-protocol.
+Because a relay cannot open what it stores and is chosen per identity, using more than one is a
+redundancy measure rather than a coordination problem. There is no canonical relay whose failure
+stops the protocol. Running several does mean several of them see the envelope described above,
+so choose them the way you would choose anyone who gets to watch your activity.
 
 ## Files
 
