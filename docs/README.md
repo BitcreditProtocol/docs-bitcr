@@ -26,7 +26,7 @@ features:
   - title: Recourse
     details: When a bill is dishonoured the loss travels back up the endorsement chain. Exactly which earlier holders are eligible, with worked examples.
   - title: Transport
-    details: Bills move over Nostr as public events with encrypted content. Relays store ciphertext they cannot read.
+    details: Bills move over Nostr as public events. Relays store a payload they cannot open, inside an envelope they can.
   - title: Specification
     details: Everything here traces to CATS, the Credit Assurance Token Standard. Where this site and CATS disagree, CATS is right.
 

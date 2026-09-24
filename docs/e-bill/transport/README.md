@@ -17,7 +17,7 @@ would be listening.
 
 | Purpose | Nostr event |
 | --- | --- |
-| Bill chain blocks | text notes: **public events, encrypted content** |
+| Bill chain blocks | text notes: **public events, encrypted block payload** |
 | Private messages between participants | gift-wrapped events, with legacy encrypted direct messages still handled |
 | Relay discovery | relay list events |
 | Profile data | metadata events |
@@ -25,9 +25,16 @@ would be listening.
 | File metadata | kind `1063` events |
 
 The first row is the one that repays a second look. Chain blocks travel as **public** notes, and
-their privacy comes entirely from encryption rather than from access control. A relay holds them,
-serves them to anyone, and cannot read them. A client without the chain key for a bill sees the
-event arrive and skips it. Nothing about the bill is exposed by its blocks being fetchable.
+what encryption protects is the block's payload, not the whole block. A relay holds the note and
+serves it to anyone. Neither the relay nor a client without the chain key can open the payload.
+
+The rest of the block is in the clear, and deliberately so: it is what lets any client fetch a
+chain, put it in order, and check that it has not been tampered with. So an observer without the
+key still sees the bill's id, carried in a plain tag so the chain can be found at all, the block's
+height and timestamp, the hashes linking it to the block before it, the public key that signed it,
+and which operation it performs: issue, endorse, request to pay, sell. The existence of a bill,
+its shape over time, and which keys acted on it are therefore public. Its terms are not: the
+amount, the dates, the participants and every other field live inside the encrypted payload.
 
 This is what makes the relay a dumb, replaceable component rather than a trusted one.
 
@@ -38,9 +45,10 @@ Anyone. Bitcredit publishes its own relay implementation,
 [Postgres storage backend](https://github.com/BitcreditProtocol/nostr-postgres-db), but a
 participant is free to run any Nostr relay, or several.
 
-Because relays hold ciphertext and are chosen per identity, using more than one is a redundancy
-measure rather than a coordination problem. There is no canonical relay whose failure stops the
-protocol.
+Because a relay cannot open what it stores and is chosen per identity, using more than one is a
+redundancy measure rather than a coordination problem. There is no canonical relay whose failure
+stops the protocol. Running several does mean several of them see the envelope described above,
+so choose them the way you would choose anyone who gets to watch your activity.
 
 ## Files
 

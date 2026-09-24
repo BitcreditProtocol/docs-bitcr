@@ -65,5 +65,7 @@ itself, which each of them can check alone.
 
 Every participant holds the blocks for the bills they are party to, and the encrypted chain is
 also held on Nostr relays, which is what makes [restoring an
-account](../identity-record/identity-restore-transfer.md) from a seed phrase possible. The relay
-stores ciphertext; the keys stay with the participants. See [Transport](../transport/).
+account](../identity-record/identity-restore-transfer.md) from a seed phrase possible. A relay
+cannot open a block's payload, which is where the terms live, but it can read the envelope around
+it: the bill's id, the block's height and timestamp, the hash chain and the operation. The keys
+stay with the participants. See [Transport](../transport/).

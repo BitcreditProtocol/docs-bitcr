@@ -28,7 +28,7 @@ encrypting data. Identities were created by publishing a DHT identity event and 
 | Then | Now |
 | --- | --- |
 | libp2p DHT | Nostr relays |
-| Per-bill DHT topics | encrypted public events, readable only with the chain key |
+| Per-bill DHT topics | public events whose payload is readable only with the chain key |
 | DCUtR hole-punching between peers | clients connect to relays; no peer-to-peer connectivity needed |
 | Bootstrap nodes and DHT joining | a published relay list per identity |
 | ed25519 for DHT logic | Secp256k1 throughout |
