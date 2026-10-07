@@ -17,7 +17,7 @@ actions:
     type: primary
 
 features:
-  - title: E-Bill
+  - title: E-bill
     details: What a bill holds, how it is identified and signed, and every operation a participant can perform on it, with the conditions that gate each one.
   - title: Wildcat Mint
     details: What a credit mint is, what a credit token carries, and how a bill becomes e-cash before it matures.

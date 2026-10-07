@@ -1,4 +1,4 @@
-# E-Bill
+# E-bill
 
 An **e-bill** is an electronic bill of exchange: a dated, transferable order to pay, of the kind
 in commercial use since the Middle Ages, issued and passed on without a bank in the middle.

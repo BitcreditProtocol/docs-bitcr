@@ -57,7 +57,7 @@ export default defineUserConfig({
     colorModeSwitch: true,
 
     navbar: [
-      { text: 'E-Bill', link: '/e-bill/' },
+      { text: 'E-bill', link: '/e-bill/' },
       { text: 'Wildcat Mint', link: '/wildcat-mint/' },
       { text: 'Glossary', link: '/glossary.md' },
     ],
@@ -65,7 +65,7 @@ export default defineUserConfig({
     sidebar: {
       '/e-bill/': [
         {
-          text: 'E-Bill',
+          text: 'E-bill',
           children: [
             '/e-bill/README.md',
             {
