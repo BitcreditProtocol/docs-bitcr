@@ -4,18 +4,19 @@
 //   build command      pnpm docs:build
 //   deploy command     npx wrangler deploy
 //   preview command    npx wrangler versions upload (not used, see below)
-// "Builds for Preview branches" (Settings > Builds > Previews Base) stays off. With it on, every
-// branch build failed at the preview command from 2026-09-29 to 2026-10-09: "The name in your
-// wrangler.jsonc file (docs-bitcr) must match the name of your Worker". With it off, a branch push
-// starts no build, so a pull request gets no preview URL. Check a change locally instead.
+// "Builds for Preview branches" (Settings > Builds > Previews Base) stays off. With it on, the
+// branch builds of #21, #23, #24 and #26 failed from 2026-09-29 to 2026-10-09. The #26 log shows
+// "npx wrangler versions upload" failing with "The name in your wrangler.jsonc file (docs-bitcr)
+// must match the name of your Worker". The name is right: master deploys with it. The cause is not
+// confirmed. With the toggle off, a branch push starts no build, so a pull request gets no preview.
 // Node comes from .nvmrc, pnpm from packageManager in package.json; set a PNPM_VERSION build
 // variable only if a build log shows a different pnpm than the pinned one.
 // Local preview of a build: npx wrangler dev
 {
   "name": "docs-bitcr",
   "compatibility_date": "2026-08-31",
-  // Each uploaded version gets a preview URL on workers.dev; this is what makes
-  // "wrangler versions upload" useful as the preview command.
+  // Each uploaded version gets a Version URL on workers.dev, for example after a manual
+  // "npx wrangler versions upload". Branch builds upload no version (see the top of this file).
   "preview_urls": true,
   "assets": {
     // VuePress output, see docs:build in package.json.
