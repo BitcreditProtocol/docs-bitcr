@@ -69,17 +69,18 @@ the dev server again.
 [`wrangler.jsonc`](wrangler.jsonc). The repository is connected to Workers Builds, which builds
 every push to `master` with `pnpm docs:build` and then runs `npx wrangler deploy`, the production
 deploy. A push to any other branch starts no build, so a pull request gets no preview and no
-"Workers Builds" check; the comment at the top of `wrangler.jsonc` says why. The build and deploy
-commands live in the Cloudflare dashboard, as do the custom domain
-and its DNS record; domain routing is managed in Cloudflare rather than via repository config. The
+"Workers Builds" check. The comment at the top of `wrangler.jsonc` says why. The build and deploy
+commands live in the Cloudflare dashboard, as do the custom domain and its DNS record. Domain
+routing is managed in Cloudflare rather than via repository config. The
 build image takes Node from `.nvmrc` and pnpm from `packageManager`.
 The Cloudflare GitHub App must list this repository, or pushes are ignored without an error.
 `npx wrangler dev` serves a local build.
 
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
-pages or sidebar entries that point at nothing. It does not deploy. It is the only build of a pull
-request, so it is what catches a dependency bump with unmet peers before it is merged and deployed.
+pages or sidebar entries that point at nothing. It does not deploy. While "Builds for Preview
+branches" is off, it is the only build of a pull request, so it catches a dependency bump with unmet
+peers before it is merged and deployed.
 
 Navigation is not automatic: a new page has to be added to the `sidebar` in
 [`docs/.vuepress/config.js`](docs/.vuepress/config.js), or it is only reachable by URL.
