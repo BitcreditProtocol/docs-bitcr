@@ -5,7 +5,7 @@ Bitcredit documentation. A [VuePress](https://vuejs.press/) site served at
 
 It documents two things:
 
-- **E-Bill**: the electronic bill of exchange, covering its identifiers, its content, and every
+- **E-bill**: the electronic bill of exchange, covering its identifiers, its content, and every
   operation a participant can perform on it.
 - **Wildcat Mint**: what a Wildcat is and what it does with a bill, at an overview level.
 

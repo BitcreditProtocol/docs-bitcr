@@ -1,7 +1,7 @@
 # Local build
 
 Building and running [Bitcredit-Core](https://github.com/BitcreditProtocol/Bitcredit-Core), the
-E-Bill implementation, locally.
+eBills implementation, locally.
 
 The core is written in Rust and exposes the same API two ways: as a web API, and as a WebAssembly
 module for use in a browser. The WASM path is the one a wallet or a front end uses, and it is the
