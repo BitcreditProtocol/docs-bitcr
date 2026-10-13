@@ -7,6 +7,7 @@
 // push starts no build and produces no preview or Workers Builds check. The dependency and
 // previews block prepare Support's proposal in issue #20; an automatic build must still verify it.
 // See README.md for the Worker Previews command and dashboard checks before testing a fresh push.
+// Save dashboard changes before pushing the commit that tests the automatic preview trigger.
 // Node comes from .nvmrc, pnpm from packageManager in package.json; set a PNPM_VERSION build
 // variable only if a build log shows a different pnpm than the pinned one.
 // Local preview of a build: pnpm exec wrangler dev
