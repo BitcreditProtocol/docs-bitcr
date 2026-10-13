@@ -1,8 +1,9 @@
 # pnpm settings live here since pnpm 11; the pnpm field in package.json is ignored.
 
 # pnpm 11 refuses to install while dependency build scripts are neither allowed nor denied.
-# Both packages ship prebuilt binaries as optional dependencies; their scripts are only a
-# build-from-source fallback, so deny them.
+# These packages ship prebuilt binaries as optional dependencies. Use those binaries
+# without running install-time setup or fallback scripts.
 allowBuilds:
   esbuild: false
   '@parcel/watcher': false
+  workerd: false

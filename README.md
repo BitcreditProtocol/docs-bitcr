@@ -58,7 +58,8 @@ installs all write the same lockfile.
 | `pnpm docs:clean-dev` | Dev server after clearing the VuePress cache |
 | `pnpm docs:build` | Build the site into `docs/.vuepress/dist` |
 | `pnpm docs:update-package` | Bump the VuePress packages to their latest release |
-| `npx wrangler dev` | Serve a build the way the Cloudflare Worker will, on `localhost:8787` |
+| `pnpm exec wrangler dev` | Serve a build the way the Cloudflare Worker will, on `localhost:8787` |
+| `pnpm exec wrangler deploy --dry-run` | Validate production packaging after building, without uploading |
 
 Editing `docs/.vuepress/styles/index.scss` does not hot-reload: run `pnpm docs:build`, then start
 the dev server again.
@@ -66,25 +67,56 @@ the dev server again.
 ## Deploying
 
 `docs.bitcr.org` is served by the `docs-bitcr` Cloudflare Worker as static assets, configured in
-[`wrangler.jsonc`](wrangler.jsonc). The repository is connected to Workers Builds, which builds
-every push with `pnpm docs:build`; for `master` it then runs `npx wrangler deploy`, which is the
-production deploy, for any other branch `npx wrangler versions upload`. That upload gives the
-branch a preview at `https://<branch>-docs-bitcr.bitcredit.workers.dev`, slashes in the branch
-name turned into hyphens, and reports as the "Workers Builds: docs-bitcr" check on the pull
-request. The build and preview commands live in the Cloudflare dashboard, as do the custom domain
-and its DNS record; domain routing is managed in Cloudflare rather than via repository config. The
-build image takes Node from `.nvmrc` and pnpm from `packageManager`.
-Two things stop builds without a useful error. The Cloudflare GitHub App must list this
-repository, or pushes are ignored. And while the Worker Previews beta ("Builds for Preview
-branches" in the dashboard) is enabled, a push fails at "Preview creation" in zero seconds because
-the account has no access to that beta; re-running the failed check from GitHub goes through the
-classic trigger with `versions upload` and succeeds. `npx wrangler dev` serves a local build.
+[`wrangler.jsonc`](wrangler.jsonc). Workers Builds builds pushes to `master` with
+`pnpm docs:build`, then runs `npx wrangler deploy` for production. Build commands, branch controls,
+the custom domain and its DNS record are managed in the Cloudflare dashboard. The build image
+takes Node from `.nvmrc` and pnpm from `packageManager`.
+
+The last reported dashboard state, recorded in [PR #27](https://github.com/BitcreditProtocol/docs-bitcr/pull/27)
+on 2026-10-09, has preview branch builds disabled. While disabled, branch pushes start no
+Cloudflare build, and pull requests get no preview or "Workers Builds" check. That PR reports
+branch failures on #21, #23, #24 and #26; #26 failed at `wrangler versions upload` with a Worker
+name mismatch. Production uses the same `docs-bitcr` name successfully. The cause is unconfirmed.
+
+### Proposed preview build fix
+
+[Cloudflare Support's 2026-10-12 recommendation](https://github.com/BitcreditProtocol/docs-bitcr/issues/20#issuecomment-6125599036)
+is to install Wrangler 4.135.0 or newer as a project dependency, add a `previews` block, and test a
+fresh push. This repository pins Wrangler 4.149.0 in `devDependencies` and `pnpm-lock.yaml`.
+Install development dependencies in Workers Builds so `npx wrangler` uses that local version;
+`pnpm exec wrangler --version` verifies it without downloading another version.
+
+The empty `previews` block is sufficient for this static site, which has no separate variables
+or resource bindings. Assets and compatibility settings stay at the top level, as described in
+[Cloudflare's preview configuration guide](https://developers.cloudflare.com/workers/previews/configuration/).
+`preview_urls: true` permits URLs; it does not enable branch build triggers. These repository
+changes prepare the suggested fix. They do not change dashboard settings or establish that
+automatic preview builds now work.
+
+To validate on Cloudflare after publishing the branch:
+
+1. Confirm the Cloudflare GitHub App includes this repository, and the build log uses the pinned
+   Node, pnpm and Wrangler versions with development dependencies installed.
+2. Check the dashboard's preview mode and command before enabling preview builds. Worker Previews
+   uses `pnpm exec wrangler preview` (equivalent to Cloudflare's `npx wrangler preview`), not the
+   older `wrangler versions upload` workflow. If the Worker still needs the
+   [one-time switch to Worker Previews](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#existing-workers-connected-to-builds),
+   have the owner review it separately: Cloudflare says the switch cannot be reversed.
+3. With preview builds enabled and the command confirmed, push a fresh branch commit. Verify the
+   automatically triggered build, its preview URL, and the pull request's Workers Builds check.
+   A successful local dry run or manual retry does not validate the push-event failure in
+   [issue #20](https://github.com/BitcreditProtocol/docs-bitcr/issues/20).
+4. If it still fails, collect the failed build ID, Worker ID, full build-page screenshot including
+   the Logs tab, and Wrangler version for Support. Support suggests reinstalling the GitHub
+   integration as a fallback if the failure persists.
 
 Pull requests are checked by [`.github/workflows/build.yml`](.github/workflows/build.yml),
 which installs with `--frozen-lockfile --strict-peer-dependencies`, builds, and fails on stub
-pages or sidebar entries that point at nothing. It does not deploy. Workers Builds builds the
-same pull request for its preview but runs none of those checks, so this is still what catches a
-dependency bump with unmet peers before it is merged and deployed.
+pages or sidebar entries that point at nothing. It also checks Wrangler's production packaging
+with `deploy --dry-run`, without deploying. Wrangler 4.149.0 has no dry run for `wrangler preview`,
+so the Worker Previews deployment path must be tested on Cloudflare. While preview branch builds
+are disabled, this is the only pull request build. It remains necessary when previews are enabled
+because Workers Builds does not perform the strict peer, stub-page or sidebar checks.
 
 Navigation is not automatic: a new page has to be added to the `sidebar` in
 [`docs/.vuepress/config.js`](docs/.vuepress/config.js), or it is only reachable by URL.
